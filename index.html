@@ -27,7 +27,11 @@
 
     </script>
 
-
+    <!-- Colors TKFDM 
+    light green:    #53BE95
+    dark green:     #3F8785
+    lila:           #514960
+    -->
     <style>
         canvas {
             -moz-user-select: none;
@@ -38,15 +42,15 @@
         .w3-container:after,.w3-container:before,.w3-panel:after,.w3-panel:before,.w3-row:after,.w3-row:before,.w3-row-padding:after,.w3-row-padding:before,
         .w3-cell-row:before,.w3-cell-row:after,.w3-clear:after,.w3-clear:before,.w3-bar:before,.w3-bar:after{content:"";display:table;clear:both}
         .w3-padding{padding:8px 0px!important}
-        .w3-green,.w3-hover-green:hover{color:#fff!important;background-color:#4CAF50!important}
+        .w3-green,.w3-hover-green:hover{color:#fff!important;background-color:#53BE95!important}
         .w3-border{border:1px solid #ccc!important}
 
-        .glyphicon-info-sign {font-size: 1.3em; color: #328cc7;}
+        .glyphicon-info-sign {font-size: 1.3em; color: #53BE95;}
 
-        a:link {color: #007B9A;}
+        a:link {color: #3F8785;}
 
-        a:visited {color: #007B9A;}
-        a {color: #007B9A;}
+        a:visited {color: #3F8785;}
+        a {color: #3F8785;}
 
     </style>
 
@@ -104,7 +108,7 @@
             // $("#rscore").html(rscore);
             $("#rstars").html(createStars(rscore/7.0 * 5));
 
-            var tscore = fscore / 17 + ascore / 10.0 + iscore / 8.0 + rscore / 6.0;
+            var tscore = fscore / 17 + ascore / 10.0 + iscore / 8.0 + rscore / 7.0;
             $("#tbar").attr('style', "width: " +  tscore * 25.0 + "%");
             console.log(tscore)
             $("#tstars").html(createStars(tscore/4.0 * 5));
@@ -555,7 +559,7 @@
             </div>
         </div>
 
-        <h4>Total across F.A.I.R</h4>
+        <h3>Total across F.A.I.R</h3>
 
         <div class="w3-border">
             <div id="tbar" class="w3-container w3-padding w3-green" style="width:0%">
