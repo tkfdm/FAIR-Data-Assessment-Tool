@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8"/>
-    <title>FAIR self-assessment tool</title>
+    <title>FAIR Assessment Tool by TKFDM</title>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
@@ -25,11 +25,6 @@
 
     </script>
 
-    <!-- Colors TKFDM 
-    light green:    #53BE95
-    dark green:     #3F8785
-    lila:           #514960
-    -->
     <style>
         canvas {
             -moz-user-select: none;
@@ -68,111 +63,110 @@
         function update() {
             /*
             In all of the following variable names, if there is a prefix of [fair], it stands for
-            Findable, Accessible, Interoperable and Reusable respectively.  For example, fscore refers
+            Findable, Accessible, Interoperable and Reusable respectively. For example, fscore refers
             to the score for 'Findable'.
 
-            The prefix q is for question, so, for example, '#q1' is a reference to question 1.
+            The prefixes f, a, i and r with a number are standing for the respective question, 
+            e.g. '#f1' is a reference to question 1 in 'Findable'.
             
-            If there is no identifier in the dataset, then the following question must default to no */
-
-            if (parseInt($("#q1").val()) === 0) {
-                $("#q2").val(0);
-                $("#q2").enabled = false;
+            Condition: If there is no identifier in the dataset, then the following question 
+            must default to no and can't be changed.
+            */
+            if (parseInt($("#f1").val()) === 0) {
+                $("#f2").val(0);
+                $("#f2").enabled = false;
             }
 
             /* calculate Findable score */
-            var fscore =    parseInt($("#q1").val()) + 
-                            parseInt($("#q2").val()) +
-                            parseInt($("#q3").val()) + 
-                            parseInt($("#q4").val());
-            $("#fbar").attr('style', "width: " +  (fscore / 17.0) * 100 + "%");
+            var fscore_max = 26;
+            var fscore =    parseInt($("#f1").val()) + 
+                            parseInt($("#f2").val()) +
+                            parseInt($("#f3").val()) + 
+                            parseInt($("#f4").val()) + 
+                            parseInt($("#f5").val());
+            $("#fbar").attr('style', "width: " +  (fscore / fscore_max) * 100 + "%");
             $("#fscore").html(fscore);
-            $("#fstars").html(createStars(fscore/17.0 * 5));
 
             /* calculate Accessible score */
-            var ascore =    parseInt($("#q5").val()) + 
-                            parseInt($("#q6").val()) +
-                            parseInt($("#q7").val());
-            $("#abar").attr('style', "width: " +  (ascore / 10.0) * 100 + "%");
+            var ascore_max = 10;
+            var ascore =    parseInt($("#a1").val()) + 
+                            parseInt($("#a2").val()) +
+                            parseInt($("#a3").val());
+            $("#abar").attr('style', "width: " +  (ascore / ascore_max) * 100 + "%");
             $("#ascore").html(ascore);
-            $("#astars").html(createStars(ascore/10.0 * 5));
 
             /* calculate Interoperable score */
-            var iscore =    parseInt($("#q8").val()) + 
-                            parseInt($("#q9").val()) +
-                            parseInt($("#q10").val());
-            $("#ibar").attr('style', "width: " +  (iscore / 8.0) * 100 + "%");
+            var iscore_max = 15;
+            var iscore =    parseInt($("#i1").val()) + 
+                            parseInt($("#i2").val()) +
+                            parseInt($("#i3").val()) +
+                            parseInt($("#i4").val());
+            $("#ibar").attr('style', "width: " +  (iscore / iscore_max) * 100 + "%");
             $("#iscore").html(iscore);
-            $("#istars").html(createStars(iscore/8.0 * 5));
 
             /* calculate Reusable score */
-            var rscore =    parseInt($("#q11").val()) + 
-                            parseInt($("#q12").val());
-            $("#rbar").attr('style', "width: " +  (rscore / 7.0) * 100 + "%");
+            var rscore_max = 16;
+            var rscore =    parseInt($("#r1").val()) + 
+                            parseInt($("#r2").val()) + 
+                            parseInt($("#r3").val()) + 
+                            parseInt($("#r4").val());
+            $("#rbar").attr('style', "width: " +  (rscore / rscore_max) * 100 + "%");
             $("#rscore").html(rscore);
-            $("#rstars").html(createStars(rscore/7.0 * 5));
 
             /* calculate total score */
-            var tscore =    fscore / 17 + 
-                            ascore / 10.0 + 
-                            iscore / 8.0 + 
-                            rscore / 7.0;
-            $("#tbar").attr('style', "width: " +  tscore * 25.0 + "%");
-            console.log(tscore)
-            $("#tstars").html(createStars(tscore/4.0 * 5));
+            var tscore =    (fscore / fscore_max + 
+                            ascore / ascore_max + 
+                            iscore / iscore_max + 
+                            rscore / rscore_max)*25;
+            $("#tbar").attr('style', "width: " +  tscore + "%");
+
+            /* show values in console */
+            console.log("F: " + (fscore / fscore_max) * 100 + "%")
+            console.log("A: " + (ascore / ascore_max) * 100 + "%")
+            console.log("I: " + (iscore / iscore_max) * 100 + "%")
+            console.log("R: " + (rscore / rscore_max) * 100 + "%")
+            console.log("Total: " + tscore + "%")
 
             /* update scores when options are selected */
-            $("#q1_answer").html('<i>' + $("#q1 option:selected").text() + '</i>');
-            $("#q1_score").html($("#q1").val());
-            $("#q2_answer").html('<i>' + $("#q2 option:selected").text() + '</i>');
-            $("#q2_score").html($("#q2").val());
-            $("#q3_answer").html('<i>' + $("#q3 option:selected").text() + '</i>');
-            $("#q3_score").html($("#q3").val());
-            $("#q4_answer").html('<i>' + $("#q4 option:selected").text() + '</i>');
-            $("#q4_score").html($("#q4").val());
+            $("#f1_answer").html('<i>' + $("#f1 option:selected").text() + '</i>');
+            $("#f1_score").html($("#f1").val());
+            $("#f2_answer").html('<i>' + $("#f2 option:selected").text() + '</i>');
+            $("#f2_score").html($("#f2").val());
+            $("#f3_answer").html('<i>' + $("#f3 option:selected").text() + '</i>');
+            $("#f3_score").html($("#f3").val());
+            $("#f4_answer").html('<i>' + $("#f4 option:selected").text() + '</i>');
+            $("#f4_score").html($("#f4").val());
+            $("#f5_answer").html('<i>' + $("#f5 option:selected").text() + '</i>');
+            $("#f5_score").html($("#f5").val());
             $("#f_total").html(fscore);
 
-            $("#q5_answer").html('<i>' + $("#q5 option:selected").text() + '</i>');
-            $("#q5_score").html($("#q5").val());
-            $("#q6_answer").html('<i>' + $("#q6 option:selected").text() + '</i>');
-            $("#q6_score").html($("#q6").val());
-            $("#q7_answer").html('<i>' + $("#q7 option:selected").text() + '</i>');
-            $("#7_score").html($("#q7").val());
+            $("#a1_answer").html('<i>' + $("#a1 option:selected").text() + '</i>');
+            $("#a1_score").html($("#a1").val());
+            $("#a2_answer").html('<i>' + $("#a2 option:selected").text() + '</i>');
+            $("#a2_score").html($("#a2").val());
+            $("#q8_answer").html('<i>' + $("#a3 option:selected").text() + '</i>');
+            $("#q8_score").html($("#a3").val());
             $("#a_total").html(ascore);
 
-            $("#q8_answer").html('<i>' + $("#q8 option:selected").text() + '</i>');
-            $("#q8_score").html($("#q8").val());
-            $("#q9_answer").html('<i>' + $("#q9 option:selected").text() + '</i>');
-            $("#q9_score").html($("#q9").val());
-            $("#q10_answer").html('<i>' + $("#q10 option:selected").text() + '</i>');
-            $("#q10_score").html($("#q10").val());
+            $("#i1_answer").html('<i>' + $("#i1 option:selected").text() + '</i>');
+            $("#i1_score").html($("#i1").val());
+            $("#i2_answer").html('<i>' + $("#i2 option:selected").text() + '</i>');
+            $("#i2_score").html($("#i1").val());
+            $("#i3_answer").html('<i>' + $("#i3 option:selected").text() + '</i>');
+            $("#i3_score").html($("#i1").val());
+            $("#i4_answer").html('<i>' + $("#i4 option:selected").text() + '</i>');
+            $("#i4_score").html($("#i1").val());
             $("#i_total").html(iscore);
 
-            $("#q11_answer").html('<i>' + $("#q11 option:selected").text() + '</i>');
-            $("#q11_score").html($("#q11").val());
-            $("#q12_answer").html('<i>' + $("#q12 option:selected").text() + '</i>');
-            $("#q12_score").html($("#q12").val());
+            $("#r1_answer").html('<i>' + $("#r1 option:selected").text() + '</i>');
+            $("#r1_score").html($("#r1").val());
+            $("#r2_answer").html('<i>' + $("#r2 option:selected").text() + '</i>');
+            $("#r2_score").html($("#r1").val());
+            $("#r3_answer").html('<i>' + $("#r3 option:selected").text() + '</i>');
+            $("#r3_score").html($("#r1").val());
+            $("#r4_answer").html('<i>' + $("#r4 option:selected").text() + '</i>');
+            $("#r4_score").html($("#r4").val());
             $("#r_total").html(rscore);
-        }
-
-        // Given a score, create the html to display the stars
-        // Score should be a value between 0 and 5
-        function createStars(score) {
-            var blank = '<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>';
-            var filled = '<span class="glyphicon glyphicon-star" aria-hidden="true"></span>';
-            var html = "";
-            var i = 0;
-            score = Math.floor(score);
-
-            while (i < 5) {
-                if (score > i) {
-                    html += filled;
-                } else {
-                    html += blank;
-                }
-                i += 1;
-            }
-            return html;
         }
     </script>
 
@@ -182,20 +176,12 @@
 
 <div class="container">
 
-    <h1>FAIR Assessment Tool</h1>
+    <h1>FAIR Assessment Tool by TKFDM</h1>
 
     <p>
-        Welcome to the ARDC FAIR Data self-assessment tool. Using this tool you will be able to assess the 'FAIRness' of a dataset and determine how to enhance its FAIRness (where applicable).
+        todo: info text
     </p>
-    <p>
-        This self-assessment tool has been designed predominantly for data librarians and IT staff, but could be used by software engineers developing FAIR Data tools and services, and researchers provided they have assistance from research support staff.
-    </p>
-    <p>
-        You will be asked questions related to the principles underpinning Findable, Accessible, Interoperable and Reusable. Once you have answered all the questions in each section you will be given a ‘green bar’ indicator based on your answers in that section, and when all sections are completed, an overall 'FAIRness' indicator is provided.
-    </p>
-    <p>
-        Please be aware that additional explanatory information is provided within the tool. The (i) information button provides an overview of each of the FAIR high-level elements (Findable, Accessible, Interoperable and Reusable). Additionally, each question is hyperlinked, leading users to explanatory information and links to wider resources on related topics.
-    </p>
+
     <div class="bs-example">
         <div class="panel-group" id="accordion">
 
@@ -214,94 +200,117 @@
                     <div class="panel-body">
                         <form>
                             <div class="form-group row">
-                                <label for="q1" class="col-sm-6 col-form-label">
-                                    <a href="#" data-toggle="modal" data-target="#info_q1">
+                                <label for="f1" class="col-sm-4 col-form-label">
+                                    <a href="#" data-toggle="modal" data-target="#info_f1">
                                     Does the dataset have any identifiers assigned?
                                     </a>
                                 </label>
-
-                                <div class="col-sm-6">
-                                    <select class="form-control" id="q1">
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="f1">
                                         <option value="8">
-                                            Globally Unique, citable and persistent (e.g. DOI, PURL, ARK or Handle)
+                                            <!--&#129001; -->Globally resolvable persistent identifier to one online resource (e.g. DOI).
                                         </option>
-                                        <option value="3">
-                                            Web address (URL)
+                                        <option value="6">
+                                            <!--&#129000; -->Web address with local identifier in repository.
                                         </option>
-                                        <option value="1">
-                                            Local identifier
+                                        <option value="4">
+                                            <!--&#129000; -->Only web address.
                                         </option>
                                         <option value="0" selected="selected">
-                                            No identifier
+                                            <!--&#128997; -->No identifier.
                                         </option>
                                     </select>
                                 </div>
                             </div>
+
                             <div class="form-group row">
-                                <label for="q2" class="col-sm-6 col-form-label">
-                                    <a href="#" data-toggle="modal" data-target="#info_q2">
-                                        Is the dataset identifier included in all metadata records/files describing the data?
+                                <label for="f2" class="col-sm-4 col-form-label">
+                                    <a href="#" data-toggle="modal" data-target="#info_f2">
+                                        Is the dataset identifier included in all metadata records describing the data?
                                     </a>
                                 </label>
-
-                                <div class="col-sm-6">
-                                    <select class="form-control" id="q2">
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="f2">
+                                        <option value="2">
+                                            Yes, in all metadata records.
+                                        </option>
                                         <option value="1">
-                                            Yes
+                                            In some metadata records.
                                         </option>
                                         <option value="0" selected="selected">
-                                            No
+                                            In no metadata records (or there is no identifier).
                                         </option>
                                     </select>
                                 </div>
                             </div>
+
                             <div class="form-group row">
-                                <label for="q3" class="col-sm-6 col-form-label">
-                                    <a href="#" data-toggle="modal" data-target="#info_q3">
+                                <label for="f3" class="col-sm-4 col-form-label">
+                                    <a href="#" data-toggle="modal" data-target="#info_f3">
                                         How is the data described with metadata?
                                     </a>
                                 </label>
-
-                                <div class="col-sm-6">
-                                    <select class="form-control" id="q3">
-                                        <option value="4">
-                                            Comprehensively (see suggestion) using a recognised formal machine-readable metadata schema.
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="f3">
+                                        <option value="8">
+                                            All mandatory and at least five of the recommended OR optional properties are filled out.
                                         </option>
-                                        <option value="3">
-                                            Comprehensively, but in a text-based, non-standard format.
+                                        <option value="6">
+                                            All mandatory and less than five of the recommended OR optional properties are filled out.
+                                        </option>
+                                        <option value="4">
+                                            All mandatory properties are filled out.
                                         </option>
                                         <option value="2">
-                                            Brief title and description
+                                            Not all mandatory properties are filled out.
                                         </option>
                                         <option value="0" selected="selected">
-                                            The data is not described
+                                            No mandatory properties are filled out.
                                         </option>
                                     </select>
                                 </div>
                             </div>
+
                             <div class="form-group row">
-                                <label for="q4" class="col-sm-6 col-form-label">
-                                    <a href="#" data-toggle="modal" data-target="#info_q4">
-                                        What type of repository or registry is the metadata record in?
+                                <label for="f4" class="col-sm-4 col-form-label">
+                                    <a href="#" data-toggle="modal" data-target="#info_f4">
+                                        Where is the (meta)data published?
                                     </a>
                                 </label>
-
-                                <div class="col-sm-6">
-                                    <select class="form-control" id="q4">
-                                        <option value="4">
-                                            Data is in one place but discoverable through several registries
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="f4">
+                                        <option value="3">
+                                            Data Journal.
                                         </option>
                                         <option value="2">
-                                            Generalist public repository
+                                            Repository.
                                         </option>
-                                        <option value="2">
-                                            Domain-specific repository
-                                        </option>
-                                        <option value="2">
-                                            Local institutional repository
+                                        <option value="1">
+                                            Article Supplement.
                                         </option>
                                         <option value="0" selected="selected">
-                                            The data is not described in any repository
+                                            Website or link to data with no further information.
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="f5" class="col-sm-4 col-form-label">
+                                    <a href="#" data-toggle="modal" data-target="#info_f5">
+                                        How can the metadata be found on the web?
+                                    </a>
+                                </label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="f5">
+                                        <option value="5">
+                                            Through search engines.
+                                        </option>
+                                        <option value="2">
+                                            Only through search on the repository/website.
+                                        </option>
+                                        <option value="0" selected="selected">
+                                            Only by known link to the dataset. 
                                         </option>
                                     </select>
                                 </div>
@@ -331,91 +340,77 @@
                 <div id="collapseTwo" class="panel-collapse collapse">
                     <div class="panel-body">
                         <form>
-
                             <div class="form-group row">
-                                <label for="q5" class="col-sm-6 col-form-label">
-                                    <a href="#" data-toggle="modal" data-target="#info_q5">
-                                        How accessible is the data?
+                                <label for="a1" class="col-sm-4 col-form-label">
+                                    <a href="#" data-toggle="modal" data-target="#info_a1">
+                                        Is the accessibility statement unambigous?
                                     </a>
                                 </label>
-
-                                <div class="col-sm-6">
-                                    <select class="form-control" id="q5">
-                                        <option value="5">Publicly accessible</option>
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="a1">
                                         <option value="5">
-                                            Fully accessible to persons who meet explicitly stated conditions, e.g. ethics approval for sensitive data
+                                            Yes, Open Access.
                                         </option>
-                                        <option value="4">A de-identified / modified subset of the data is publicly
-                                            accessible
+                                        <option value="5">
+                                            Yes, Accessible by clearly stated conditions.
                                         </option>
-                                        <option value="3">
-                                            Embargoed access after a specified date
+                                        <option value="5">
+                                            Yes, Embargo.
                                         </option>
                                         <option value="2">
-                                            Unspecified conditional access e.g. contact the data custodian for access
+                                            Only metadata visible. Sparse information about availability of data.
                                         </option>
                                         <option value="1">
-                                            Access to metadata only
+                                            Only metadata visible. No information about availability of data.
                                         </option>
                                         <option value="0" selected="selected">
-                                            No access to data or metadata
+                                            No access to data or metadata.
                                         </option>
                                     </select>
                                 </div>
                             </div>
 
-
                             <div class="form-group row">
-                                <label for="q6" class="col-sm-6 col-form-label">
-                                    <a href="#" data-toggle="modal" data-target="#info_q6">
-                                        Is the data available online without requiring specialised protocols or tools once access has been approved?
+                                <label for="a2" class="col-sm-4 col-form-label">
+                                    <a href="#" data-toggle="modal" data-target="#info_a2">
+                                        Which options exist to download the files?
                                     </a>
                                 </label>
-
-                                <div class="col-sm-6">
-                                    <select class="form-control" id="q6">
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="a2">
                                         <option value="4">
-                                            Standard web service API (e.g. OGC)
+                                            Simple File Download and API.
                                         </option>
                                         <option value="3">
-                                            Non-standard web service (e.g. OpenAPI/Swagger/informal API)
+                                            Only simple file download.
                                         </option>
-                                        <option value="2">
-                                            File download from online location
-                                        </option>
-                                        <option value="1">
-                                            By individual arrangement
+                                        <option value="3">
+                                            Only API access.
                                         </option>
                                         <option value="0" selected="selected">
-                                            No access to data
+                                            No options to get the data.
                                         </option>
                                     </select>
                                 </div>
                             </div>
-
 
                             <div class="form-group row">
-                                <label for="q7" class="col-sm-6 col-form-label">
-                                    <a href="#" data-toggle="modal" data-target="#info_q7">
-                                        Will the metadata record be available even if the data is no longer available?
+                                <label for="a3" class="col-sm-4 col-form-label">
+                                    <a href="#" data-toggle="modal" data-target="#info_a3">
+                                        Is there a statement on the website/data location that guarantees the availability of the metadata even if the data is no longer available?
                                     </a>
                                 </label>
-
-                                <div class="col-sm-6">
-                                    <select class="form-control" id="q7">
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="a3">
                                         <option value="1">
-                                            Yes
-                                        </option>
-                                        <option value="0">
-                                            No
+                                            Yes.
                                         </option>
                                         <option value="0" selected="selected">
-                                            Unsure
+                                            No.
                                         </option>
                                     </select>
                                 </div>
                             </div>
-
 
                         </form>
                         <div class="w3-border">
@@ -423,7 +418,6 @@
                                 <div class="w3-center" id="idemo"></div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -441,97 +435,99 @@
                 </div>
                 <div id="collapseThree" class="panel-collapse collapse">
                     <div class="panel-body">
-
                         <form>
                             <div class="form-group row">
-
-                                <label for="q8" class="col-sm-6 col-form-label">
-                                    <a href="#reusable_info" data-toggle="modal" data-target="#info_q8">
-                                        What (file) format(s) is the data available in?
+                                <label for="i1" class="col-sm-4 col-form-label">
+                                    <a href="#" data-toggle="modal" data-target="#info_i1">
+                                        Are the metadata available in a standardized format?
                                     </a>
                                 </label>
-
-                                <div class="col-sm-6">
-                                    <select class="form-control" id="q8">
-                                        <option value="2">
-                                            In a structured, open standard, machine-readable format
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="i1">
+                                        <option value="5">
+                                            Metadata are available in more than one standard format.
                                         </option>
-                                        <option value="1">
-                                            In a structured, open standard, non-machine-readable format
-                                        </option>
-                                        <option value="0" selected="selected">
-                                            Mostly in a proprietary format
-                                        </option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="q9" class="col-sm-6 col-form-label">
-                                    <a href="#" data-toggle="modal" data-target="#info_q9">
-                                        What best describes the types of vocabularies/ontologies/tagging schemas used to define the data elements?
-                                    </a>
-                                </label>
-
-                                <div class="col-sm-6">
-                                    <select class="form-control" id="q9">
                                         <option value="3">
-                                            Standardised open and universal using resolvable global identifiers linking to explanations
-                                        </option>
-                                        <option value="2">
-                                            Standardised vocabularies/ontologies/schema without global identifiers
-                                        </option>
-                                        <option value="1">
-                                            No standards have been applied in the description of data elements
+                                            Metadata are available in one standard format.
                                         </option>
                                         <option value="0" selected="selected">
-                                            Data elements not described
+                                            Metadata are not available in a standard format.
                                         </option>
                                     </select>
                                 </div>
                             </div>
 
-
                             <div class="form-group row">
-                                <label for="q10" class="col-sm-6 col-form-label">
-                                    <a href="#" data-toggle="modal" data-target="#info_q10">
-                                        How is the metadata linked to other data and metadata (to enhance context and clearly indicate relationships)?
+                                <label for="i2" class="col-sm-4 col-form-label">
+                                    <a href="#" data-toggle="modal" data-target="#info_i2">
+                                        Is the metadata standardized?
                                     </a>
                                 </label>
-
-                                <div class="col-sm-6">
-                                    <select class="form-control" id="q10">
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="i2">
+                                        <option value="5">
+                                            5 standards are used.
+                                        </option>
+                                        <option value="4">
+                                            4 standards are used.
+                                        </option>
                                         <option value="3">
-                                            Metadata is represented in a machine readable format, e.g. in a linked data format such as Resource Description Framework (RDF).
+                                            3 standards are used.
                                         </option>
                                         <option value="2">
-                                            The metadata record includes URI links to related metadata, data and definitions
+                                            2 standards are used.
                                         </option>
-                                        <option value="0" selected="selected">
-                                            There are no links to other metadata
-                                        </option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <!-- Question removed...
-                            <div class="form-group row">
-                                <label for="q11" class="col-sm-6 col-form-label">
-                                    Does the metadata state how you wish your data to be cited?
-                                </label>
-
-                                <div class="col-sm-6">
-                                    <select class="form-control" id="q11">
                                         <option value="1">
-                                            Yes
+                                            1 standard are used.
                                         </option>
                                         <option value="0" selected="selected">
-                                            No
+                                            No standards are used.
                                         </option>
                                     </select>
                                 </div>
                             </div>
-                            -->
+
+                            <div class="form-group row">
+                                <label for="i3" class="col-sm-4 col-form-label">
+                                    <a href="#" data-toggle="modal" data-target="#info_i3">
+                                        Is the metadata linked?
+                                    </a>
+                                </label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="i3">
+                                        <option value="2">
+                                            All four attributes are linked to related data.
+                                        </option>
+                                        <option value="1">
+                                            At least one attribute is linked to related data.
+                                        </option>
+                                        <option value="0" selected="selected">
+                                            No metadata is linked to related data.
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="i4" class="col-sm-4 col-form-label">
+                                    <a href="#" data-toggle="modal" data-target="#info_i4">
+                                        In which form does the documentation exist?
+                                    </a>
+                                </label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="i4">
+                                        <option value="3">
+                                            Description metadata field or file.
+                                        </option>
+                                        <option value="1">
+                                            Linked description paper or other source outside the data or metadata.
+                                        </option>
+                                        <option value="0" selected="selected">
+                                            No description given.
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
 
                         </form>
                         <div class="w3-border">
@@ -539,7 +535,6 @@
                                 <div class="w3-center" id="iidemo"></div>
                             </div>
                         </div>
-
 
                     </div>
                 </div>
@@ -560,28 +555,21 @@
                     <div class="panel-body">
                         <form>
                             <div class="form-group row">
-                                <label for="q11" class="col-sm-6 col-form-label">
-                                    <a href="#" data-toggle="modal" data-target="#info_q11">
-                                        Which of the following best describes the license/usage rights attached to the data?
+                                <label for="r1" class="col-sm-4 col-form-label">
+                                    <a href="#" data-toggle="modal" data-target="#info_r1">
+                                        Is a usage license attached to the data?
                                     </a>
                                 </label>
-
-                                <div class="col-sm-6">
-                                    <select class="form-control" id="q11">
-                                        <option value="4">
-                                            Standard machine-readable license (e.g. Creative Commons)
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="r1">
+                                        <option value="5">
+                                            Standard machine-readable license.
                                         </option>
                                         <option value="3">
-                                            Standard text based license
-                                        </option>
-                                        <option value="3">
-                                            Non-standard machine-readable license (clearly indicating under what conditions the data may be reused)
-                                        </option>
-                                        <option value="2">
-                                            Non-standard text-based license
+                                            Self-written usage conditions without standard.
                                         </option>
                                         <option value="0" selected="selected">
-                                            No license
+                                            No usage conditions given.
                                         </option>
                                     </select>
                                 </div>
@@ -589,30 +577,70 @@
 
 
                             <div class="form-group row">
-                                <label for="q12" class="col-sm-6 col-form-label">
-                                    <a href="#" data-toggle="modal" data-target="#info_q12">
-                                        How much provenance information has been captured to facilitate data reuse?
+                                <label for="r2" class="col-sm-4 col-form-label">
+                                    <a href="#" data-toggle="modal" data-target="#info_r2">
+                                        How much provenance information is in the documentation?
                                     </a>
                                 </label>
-
-                                <div class="col-sm-6">
-                                    <select class="form-control" id="q12">
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="r2">
+                                        <option value="5">
+                                            Extensive description about provenance information.
+                                        </option>
                                         <option value="3">
-                                            Fully recorded in a machine readable format
-                                        </option>
-                                        <option value="2">
-                                            Fully recorded in a text format
-                                        </option>
-                                        <option value="1">
-                                            Partially recorded
+                                            Some provenance information aspects are described.
                                         </option>
                                         <option value="0" selected="selected">
-                                            No provenance information is recorded
+                                            No provenance information is described.
                                         </option>
                                     </select>
                                 </div>
                             </div>
 
+                            <div class="form-group row">
+                                <label for="r3" class="col-sm-4 col-form-label">
+                                    <a href="#" data-toggle="modal" data-target="#info_r3">
+                                        What measures have been taken to increase the accessibility of file formats?
+                                    </a>
+                                </label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="r3">
+                                        <option value="4">
+                                            The dataset contains only open formats.
+                                        </option>
+                                        <option value="4">
+                                            Proprietary/uncommon formats are explained AND/OR exported into open formats.
+                                        </option>
+                                        <option value="2">
+                                            Common proprietary formats are used without a duplicate of the files in  an open format.
+                                        </option>
+                                        <option value="0" selected="selected">
+                                            The dataset contains proprietary/unknown formats without a explanation OR open format export.
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="r4" class="col-sm-4 col-form-label">
+                                    <a href="#" data-toggle="modal" data-target="#info_r4">
+                                        Is a recommended citation style specified?
+                                    </a>
+                                </label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="r4">
+                                        <option value="2">
+                                            More than one citation style is available.
+                                        </option>
+                                        <option value="1">
+                                            One recommended citation style is specified.
+                                        </option>
+                                        <option value="0" selected="selected">
+                                            No recommended citation styles are specified.
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
 
                         </form>
                         <div class="w3-border">
@@ -620,14 +648,12 @@
                                 <div class="w3-center" id="rdemo"></div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
         </div>
 
-        <h3>Total across F.A.I.R.</h3>
+        <h3>Total F.A.I.R. Score</h3>
 
         <div class="w3-border">
             <div id="tbar" class="w3-container w3-padding w3-green" style="width:0%">
@@ -636,21 +662,8 @@
         </div>
         <br>
         <p>
-        To learn more about making your data more FAIR visit: <a href="https://www.ands.org.au/fair">www.ands.org.au/fair</a>
+        todo: More information here.
         </p>
-        <p><strong>Note:</strong> Click on the linked heading text to expand or collapse accordion panels.</p>
-
-        <b>Tool Disclaimer:</b> The ARDC FAIR data Self-Assessment Tool has been developed by ARDC.
-        It is provided purely for educational and informational purposes. It is based on our interpretation of the
-        <a href="https://www.force11.org/group/fairgroup/fairprinciples"
-           target="_blank">FAIR Data Principles</a> with the acknowledgement that there are other interpretations of
-        the principles.
-        Please also see other tools like the <a href="https://doi.org/10.4225/08/5a12348f8567b" target="_blank">
-        CSIRO 5 star data rating tool</a> and the <a href="https://www.surveymonkey.com/r/fairdat" target="_blank">
-        DANS FAIRdat tool</a> which provided valuable inspiration in developing this tool.
-        <p>
-        The scores arising from this tool are intended for self assessment purposes only and to trigger thinking
-        and discussion around possible ways of making data more FAIR.
     </div>
 
 </div>
@@ -666,18 +679,23 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">About Findable</h4>
+                <h4 class="modal-title">About Findable (from <a href="https://www.go-fair.org/fair-principles/" target="_blank">GO FAIR</a>)</h4>
             </div>
             <div class="modal-body">
                 <p>
-                    Making data Findable includes assigning a <a href="https://www.ands.org.au/guides/persistent-identifiers-awareness" target="_blank"> persistent identifier</a> (like a <a href="https://www.ands.org.au/guides/doi" target="_blank">DOI</a> or <a href="https://www.ands.org.au/guides/identify-my-data" target="_blank">Handle </a>), having rich <a href="https://www.ands.org.au/working-with-data/metadata" target="_blank">metadata</a> to describe the data and making sure it is findable through disciplinary and generalist discovery portals (local and international).
+                    The first step in (re)using data is to find them. Metadata and data should be easy to find for both humans and computers. Machine-readable metadata are essential for automatic discovery of datasets and services, so this is an essential component of the <a href="https://www.go-fair.org/fair-principles/fairification-process/" target="_blank">FAIRification process</a>.
                 </p>
+                <ul>
+                    <li><a href="https://www.go-fair.org/fair-principles/fair-data-principles-explained/f1-meta-data-assigned-globally-unique-persistent-identifiers/" target="_blank">F1. (Meta)data are assigned a globally unique and persistent identifier</a></li>
+                    <li><a href="https://www.go-fair.org/fair-principles/fair-data-principles-explained/f2-data-described-rich-metadata/" target="_blank">F2. Data are described with rich metadata (defined by R1 below)</a></li>
+                    <li><a href="https://www.go-fair.org/fair-principles/f3-metadata-clearly-explicitly-include-identifier-data-describe/" target="_blank">F3. Metadata clearly and explicitly include the identifier of the data they describe</a></li>
+                    <li><a href="https://www.go-fair.org/fair-principles/f4-metadata-registered-indexed-searchable-resource/" target="_blank">F4. (Meta)data are registered or indexed in a searchable resource</a></li>
+                </ul>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -687,18 +705,25 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">About Accessible</h4>
+                <h4 class="modal-title">About Accessible (from <a href="https://www.go-fair.org/fair-principles/" target="_blank">GO FAIR</a>)</h4>
             </div>
             <div class="modal-body">
                 <p>
-                    <a href="https://www.ands.org.au/working-with-data/publishing-and-reusing-data/publishing" target="_blank"> To make data accessible</a> may include making the data <a href="https://www.ands.org.au/working-with-data/articulating-the-value-of-open-data/open-data" target="_blank"> open</a> using a standardised protocol. However the data does not necessarily have to be open. There are sometimes good reasons why data <a href="https://www.ands.org.au/working-with-data/sensitive-data" target="_blank"> cannot be made open</a>, for example privacy concerns, national security or commercial interests. If it is not open there should be clarity and transparency around the conditions governing access and <a href="https://www.ands.org.au/working-with-data/publishing-and-reusing-data/licensing-for-reuse" target="_blank">reuse</a>
+                    Once the user finds the required data, she/he/they need to know how they can be accessed, possibly including authentication and authorisation.
                 </p>
+                <ul>
+                    <li><a href="https://www.go-fair.org/fair-principles/542-2/" target="_blank">A1. (Meta)data are retrievable by their identifier using a standardised communications protocol</a></li>
+                    <ul>
+                        <li><a href="https://www.go-fair.org/fair-principles/a1-1-protocol-open-free-universally-implementable/" target="_blank">A1.1 The protocol is open, free, and universally implementable</a></li>
+                        <li><a href="https://www.go-fair.org/fair-principles/a1-2-protocol-allows-authentication-authorisation-required/" target="_blank">A1.2 The protocol allows for an authentication and authorisation procedure, where necessary</a></li>
+                    </ul>
+                    <li><a href="https://www.go-fair.org/fair-principles/a2-metadata-accessible-even-data-no-longer-available/" target="_blank">A2. Metadata are accessible, even when the data are no longer available</a></li>
+                </ul>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -708,18 +733,22 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">About Interoperability</h4>
+                <h4 class="modal-title">About Interoperability (from <a href="https://www.go-fair.org/fair-principles/" target="_blank">GO FAIR</a>)</h4>
             </div>
             <div class="modal-body">
                 <p>
-                    To be interoperable (i.e. data that is interpretable by a computer, so that they can be automatically combined with other data) the data will need to use community agreed <a href="https://www.ands.org.au/guides/file-formats" target="_blank">formats</a>, language and <a href="https://www.ands.org.au/guides/vocabularies-and-research-data" target="_blank"> vocabularies</a>. The <a href="https://www.ands.org.au/working-with-data/metadata">metadata</a> will also need to use a community agreed standards and vocabularies, and contain links to related information using <a href="https://www.ands.org.au/working-with-data/citation-and-identifiers" target="_blank">identifiers</a>.
+                    The data usually need to be integrated with other data. In addition, the data need to interoperate with applications or workflows for analysis, storage, and processing.
                 </p>
+                <ul>
+                    <li><a href="https://www.go-fair.org/fair-principles/i1-metadata-use-formal-accessible-shared-broadly-applicable-language-knowledge-representation/" target="_blank">I1. (Meta)data use a formal, accessible, shared, and broadly applicable language for knowledge representation.</a></li>
+                    <li><a href="https://www.go-fair.org/fair-principles/i2-metadata-use-vocabularies-follow-fair-principles/" target="_blank">I2. (Meta)data use vocabularies that follow FAIR principles</a></li>
+                    <li><a href="https://www.go-fair.org/fair-principles/i3-metadata-include-qualified-references-metadata/" target="_blank">I3. (Meta)data include qualified references to other (meta)data</a></li>
+                </ul>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -729,135 +758,130 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">About Reusable</h4>
+                <h4 class="modal-title">About Reusable (from <a href="https://www.go-fair.org/fair-principles/" target="_blank">GO FAIR</a>)</h4>
             </div>
             <div class="modal-body">
                 <p>
-                    Reusable data should maintain its initial richness. For example, it should not be abridged for the purpose of explaining the findings in one particular publication. It needs a clear machine-readable <a href="http://www.ands.org.au/working-with-data/publishing-and-reusing-data/licensing-for-reuse" target="_blank">licence</a> and <a href="https://www.ands.org.au/partners-and-communities/ands-communities/data-provenance-interest-group" target="_blank">provenance</a> information on how the data was formed. It should also use discipline-specific data and <a href="https://www.ands.org.au/working-with-data/metadata" target="_blank"> metadata</a> standards to give it rich contextual information that will allow for accurate interpretation and reuse.
+                    The ultimate goal of FAIR is to optimise the reuse of data. To achieve this, metadata and data should be well-described so that they can be replicated and/or combined in different settings.
                 </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<div id="info_q1" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">About identifiers</h4>
-            </div>
-            <div class="modal-body">
-                <p>
-                    Identifiers are essential for identifying, finding, retrieving, linking and citing datasets. A Web address (URL) can be used to specify the online location of a resource but over time URLs tend to change which leads to broken links to the data.  To be useful, identifiers need to be persistent and unique. Digital Object Identifiers (DOIs) and other persistent identifiers (PIDs) provide a permanent citable reference to a particular dataset.  The DOI is a permanent fixed reference to the dataset no matter where it is located online and enables citation and citation metrics.
-                </p>
-                <p>
-                    Services to create a persistent identifier are often offered by your affiliated institution or the repository you are using to describe your data. Talk to your library service for more information.
-                </p>
-                <p>
-                    Read more: <a href="https://www.ands.org.au/working-with-data/citation-and-identifiers" target="_blank"> Persistent Identifiers</a>
-                </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<div id="info_q2" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">About identifiers</h4>
-            </div>
-            <div class="modal-body">
-                <p>
-                    The identifier (preferably a persistent identifier) needs to be clearly stated in the metadata record describing the data collection, and also in any associated data files or metadata.
-                </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<div id="info_q3" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">About metadata descriptions</h4>
-            </div>
-            <div class="modal-body">
-                <p>
-                    Comprehensive metadata records will include descriptive content that facilitates discovery, access and reuse of the data being described. While there is no 'one size fits all' list, comprehensive metadata should include:
+                <ul>
+                    <li><a href="https://www.go-fair.org/fair-principles/r1-metadata-richly-described-plurality-accurate-relevant-attributes/" target="_blank">R1. (Meta)data are richly described with a plurality of accurate and relevant attributes</a></li>
                     <ul>
-                        <li>a globally unique persistent identifier e.g. a DOI</li>
-                        <li>a title</li>
-                        <li>related people, i.e. the data creator or custodian</li>
-                        <li>how to access the data and file formats</li>
-                        <li>a description of how the data were created and how to interpret the data
-                        subject or keywords</li>
-                        <li>citation information that clearly indicates how the data should be cited</li>
-                        <li>a machine-readable data licence</li>
-                        <li>provenance and contextual information such as:</li>
-                        <li>
-                            <ul>
-                                <li>links to related publications, projects, services and software</li>
-                                <li>methodology and processes involved in data production</li>
-                            </ul>
-                        </li>
-                        <li>spatial and temporal coverage (if relevant)</li>
-                        <li>object-level data description</li>
+                        <li><a href="https://www.go-fair.org/fair-principles/r1-1-metadata-released-clear-accessible-data-usage-license/" target="_blank">R1.1. (Meta)data are released with a clear and accessible data usage license</a></li>
+                        <li><a href="https://www.go-fair.org/fair-principles/r1-2-metadata-associated-detailed-provenance/" target="_blank">R1.2. (Meta)data are associated with detailed provenance</a></li>
+                        <li><a href="https://www.go-fair.org/fair-principles/r1-3-metadata-meet-domain-relevant-community-standards/" target="_blank">R1.3. (Meta)data meet domain-relevant community standards</a></li>
                     </ul>
-                    Providing metadata in a standard schema allows it to be read and used by machines as well as humans.
-                <p>
-                    Read more: <a href="https://www.ands.org.au/working-with-data/metadata" target="_blank">Metadata</a>
-                </p>
-
+                </ul>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
-
     </div>
 </div>
 
-<div id="info_q4" class="modal fade" role="dialog">
+<div id="info_f1" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">About metadata repositories</h4>
+                <h4 class="modal-title">About persistent identifiers (PIDs)</h4>
             </div>
             <div class="modal-body">
                 <p>
-                    A rich metadata description alone does not ensure a dataset’s ‘findability’ on the internet; the dataset needs to be registered or indexed in a searchable resource, such as a generalist (e.g. <a href="https://figshare.com" target="_blank">Figshare</a>, <a href="http://datadryad.org" target="_blank">Dryad</a>, <a href="https://zenodo.org" target="_blank">Zenodo</a> domain-specific (e.g. <a href="https://pangaea.de" target="_blank">PANGAEA</a>, <a href="https://ada.edu.au" target="_blank">ADA</a>, <a href="https://www.icpsr.umich.edu" target="_blank">ICPSR</a>), or institutional (e.g. <a href="https://openresearch-repository.anu.edu.au" target="_blank">ANU Research Repository</a>, <a href="https://ses.library.usyd.edu.au" target="_blank">Sydney eScholarship Repository</a>, <a href="https://data.gov.au" target="_blank">data.gov.au</a>) data repository or registry. Ideally these repositories/registries are indexed by search engines such as Google and/or Google Scholar.
+                    todo: explanation
                 </p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
-
     </div>
 </div>
 
-<div id="info_q5" class="modal fade" role="dialog">
+<div id="info_f2" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">About identifiers</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    todo: explanation
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="info_f3" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">About metadata standards</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    todo: explanation
+                </p>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="info_f4" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">About publishing platforms</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    todo: explanation
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="info_f5" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">About search engines</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    todo: explanation
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="info_a1" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
@@ -867,58 +891,37 @@
             </div>
             <div class="modal-body">
                 <p>
-                    Not all data that is discoverable can be freely accessed. Often there are embargoes, access controls, and access permissions associated with data due to a variety of issues such as privacy and commercial interests. Even with all these issues much <a href="https://www.ands.org.au/working-with-data/sensitive-data" target="_blank"> sensitive data </a> can be shared. Many other issues that could be perceived as blockers to sharing data may be <a href="http://datapub.cdlib.org/closed-data-excuses-excuses" target="_blank">overcome</a>.
+                    todo: explanation
                 </p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
-
     </div>
 </div>
 
-<div id="info_q6" class="modal fade" role="dialog">
+<div id="info_a2" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">About protocols</h4>
+                <h4 class="modal-title">About access options</h4>
             </div>
             <div class="modal-body">
                 <p>
-                    Ideally users would like to retrieve appropriate internet content directly and unhindered once they have located it. Internet protocols (e.g. http and ftp) define rules and conventions for communication between devices, and tools and services are available to facilitate this process, e.g. APIs.
-                </p>
-                <p>Protocols</p>
-                <p>
-                    <a href="https://www.lifewire.com/hypertext-transfer-protocol-817944" target="_blank">HTTP</a> (Hypertext Transfer Protocol) is the set of rules for transferring files (text, graphic images, sound, video, and other multimedia files) on the <a href="http://searchcrm.techtarget.com/definition/World-Wide-Web" target="_blank"> World Wide Web</a>. As soon as a Web user opens their Web browser, the user is indirectly making use of HTTP.
-                </p>
-                <p>
-                    <a href="https://www.lifewire.com/file-transfer-protocol-817943" target="_blank">FTP</a> (File Transfer Protocol) is a standard Internet <a href="http://searchnetworking.techtarget.com/definition/protocol">protocol</a> for transmitting files between computers on the Internet over TCP/IP connections.
-                </p>
-                <p>
-                    Read more: <a href="https://www.lifewire.com/definition-of-protocol-network-817949" target="_blank"> Web protocols</a>
-                </p>
-                <p>
-                    API (Application Programming Interface): When information is made available in any machine readable format, it becomes possible to make that information directly available to programs that request that information over the web.  An API is the way this information is made directly available to other machines.
-                </p>
-                <p>
-                    View more: <a href="https://youtu.be/s7wmiS2mSXY" target="_blank">What is an API?</a>
-                </p>
-                <p>
-                    OGC - <a href="http://www.opengeospatial.org/ogc" target="_blank">http://www.opengeospatial.org/ogc</a>
+                    todo: explanation
                 </p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
-
     </div>
 </div>
 
-<div id="info_q7" class="modal fade" role="dialog">
+<div id="info_a3" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
@@ -928,162 +931,97 @@
             </div>
             <div class="modal-body">
                 <p>
-                    Effort is often required to maintain data resources online which can often lead to it being neglected especially over long periods of time.  This often leads to broken links between the metadata and the data.  Having at least a description of the data in the form of a metadata record means there is a record of the data's existence allowing the possibility of someone tracking it down.
+                    todo: explanation
                 </p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
-
     </div>
 </div>
 
-<div id="info_q8" class="modal fade" role="dialog">
+<div id="info_i1" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">About file formats</h4>
+                <h4 class="modal-title">About metadata container</h4>
             </div>
             <div class="modal-body">
                 <p>
-                    When selecting file formats for archiving, the formats should ideally be:
-                    <ul>
-                        <li>Non-proprietary</li>
-                        <li>Unencrypted</li>
-                        <li>Uncompressed</li>
-                        <li>In common usage by the research community</li>
-                        <li>Adherent to an open, documented standard, such as described by the State of California (see <a href="http://www.leginfo.ca.gov/pub/07-08/bill/asm/ab_1651-1700/ab_1668_bill_20070524_amended_asm_v96.pdf" target="_blank">AB 1668, 2007</a>)</li>
-                        <ul>
-                            <li>Interoperable among diverse platforms and applications</li>
-                            <li>Fully published and available royalty-free</li>
-                            <li>Fully and independently implementable by multiple software providers on multiple platforms without any intellectual property restrictions for necessary technology</li>
-                            <li>Developed and maintained by an open standards organization with a well-defined inclusive process for evolution of the standard.</li>
-                        </ul>
-                    </ul>
+                    todo: explanation
                 </p>
-                <p style="text-indent: 25px;">
-                    From: <a href="https://library.stanford.edu/research/data-management-services/data-best-practices/best-practices-file-formats" target="_blank">Stanford University Library - Best practices for file formats</a>
-                </p>
-                <p>
-                    File format examples:
-                    <ul>
-                        <li> Structured, open standard, machine-readable format  e.g. (text) PDF/A, HTML, Plain text, (images) TIFF, JPEG 2000, GIF, (audio) MP3, AIFF, WAVE, (video) MOV, MPEG, AVI, (Tabular data) CSV</li>
-                        <li> structured, open standard, non-machine-readable format, e.g. PDF, HTML, JPG</li>
-                        <li> Proprietary format, e.g. doc (Word), .xls (Excel), .ppt (PowerPoint), .sav</li>
-                    </ul>
-                Read more:
-                <ul style="list-style-type: none;">
-                    <li><a href="https://www.ands.org.au/__data/assets/pdf_file/0003/731775/File-Formats.pdf" target="_blank">ANDS</a></li>
-                    <li><a href="https://www.europeandataportal.eu/elearning/en/module9/#/id/co-01" target="_blank">European Data Portal</a></li>
-                </ul>
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
-
     </div>
 </div>
 
-<div id="info_q9" class="modal fade" role="dialog">
+<div id="info_i2" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">About schema standards</h4>
+                <h4 class="modal-title">About specific metadata standards</h4>
             </div>
             <div class="modal-body">
                 <p>
-                    Schema standards are schemas that have gone through a formal validation process by a standards organisation, such as the International Standards Organisation (ISO) or an equivalent body such as the Dublin Core Metadata Initiative (DCMI); or, commonly used and consistently applied metadata schemas that are well documented, endorsed, and maintained can also become ‘de-facto standards’, e.g. RIF-CS for describing data collections and services used in Research Data Australia.
-                </p>
-                <p>
-                    Read more: <a href="http://www.ands.org.au/guides/metadata-working" target="_blank">Metadata schema</a>
-                </p>
-                <p>
-                    Standardised open and universal schemas, e.g, <a href="http://www.dcc.ac.uk/resources/metadata-standards/datacite-metadata-schema" target="_blank"> DataCite Metadata Schema</a>, <a href="http://www.dcc.ac.uk/resources/metadata-standards/prov" target="_blank"> PROV</a>, <a href="http://www.dcc.ac.uk/resources/metadata-standards/dublin-core" target="_blank">Dublin Core</a>
-                </p>
-                <p>
-                    Domain-specific standards, e.g. .<a href="http://human-phenotype-ontology.github.io/" target="_blank"> HPO - Human Phenotype Ontology</a>, <a href="https://www.nlm.nih.gov/mesh/" target="_blank">MeSH - Medical Subject Headings </a>, <a href="http://mcp-profile-docs.readthedocs.io/en/stable/" target="_blank">Marine Community Profile</a>, <a href="http://www.ddialliance.org/" target="_blank">DDI - Data Documentation Initiative</a>.
-                </p>
-                <p>
-                    For <a href="http://rd-alliance.github.io/metadata-directory/" target="_blank">more examples of standards...</a>
-                </p>
-                <p>
-                    Resolvable global identifiers - An identifier is any label used to name something uniquely (whether online or offline).  URLs are an example of an identifier. So are serial numbers, and personal names. A persistent identifier is guaranteed to be managed and kept up to date over adefined time period.
-                </p>
-                <p>
-                    Read more: <a href="http://www.ands.org.au/guides/persistent-identifiers-awareness" target="_blank"> Persistent Identifiers</a>
+                    todo: explanation
                 </p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
-
     </div>
 </div>
 
-<div id="info_q10" class="modal fade" role="dialog">
+<div id="info_i3" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">About metadata links</h4>
+                <h4 class="modal-title">About linked metadatas</h4>
             </div>
             <div class="modal-body">
                 <p>
-                    The goal is to create as many meaningful linkages as possible between (meta)data resources to enrich the contextual knowledge about the data, balanced against the time/energy involved in making a good data model.
-                </p>
-                <h4>Machine-readable (meta)data</h4>
-                <p>
-                    (Meta)data in a format that can be automatically read and processed by a computer, such as <a href="http://opendatahandbook.org/glossary/en/terms/csv/" target="_blank">CSV</a>, <a href="http://opendatahandbook.org/glossary/en/terms/json/" target="_blank">JSON</a>, <a href="http://opendatahandbook.org/glossary/en/terms/xml/" target="_blank">XML</a> etc.
-                </p>
-                <p>
-                    For more information: <a href="http://opendatahandbook.org/glossary/en/terms/machine-readable/">Open Data Handbook</a>
-                </p>
-                <h4>Linked Data</h4>
-                <p>
-                    Linked Data (also known as Linking Data) can be applied to improve the exploitation of the “Web of data.” The expression refers to the publishing of structured data in a way that typed links are created between data from different sources to provide a higher level of usability. By using Linked Data, it is possible to find other, related data. Structured data should meet four requirements to be called Linked Data:
-                </p>
-                    <ul>
-                        <li>URIs should be assigned to all entities of the dataset.</li>
-                        <li>HTTP URIs are required to ensure that all entities can be referenced and cited by users and user agents.</li>
-                        <li>Entities should be described using standard formats such as RDF/XML.</li>
-                        <li>Links should be created to other, related entity URIs.</li>
-                    </ul>
-                <p>
-                    All data that fulfil these requirements and are released for the public are called Linked Open Data (LOD).<br>
-                    http://www.lesliesikos.com/semantic-web-machine-readable-structured-data-with-meaningful-annotations/
-                </p>
-                <p>
-                    Read more under the heading (meta)data include qualified references to other (meta)data in the following resource:<br>
-                    https://www.dtls.nl/fair-data/fair-principles-explained/
-                </p>
-                <p>
-                    For more information on Linked Data standards:<br>
-                    RDF - https://www.w3.org/RDF/
-                <p>
-                    Other related linked data standards:<br>
-                    OWL - https://www.w3.org/OWL/<br>
-                    SKOS - https://www.w3.org/2004/02/skos/<br> 
-                    SPARQL - https://www.w3.org/TR/rdf-sparql-query/<br>
+                    todo: explanation
                 </p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
-
     </div>
 </div>
 
-<div id="info_q11" class="modal fade" role="dialog">
+<div id="info_i4" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">About documentation options</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    todo: explanation
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="info_r1" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
@@ -1093,32 +1031,7 @@
             </div>
             <div class="modal-body">
                 <p>
-                    If data is not licensed no-one else can use it. In Australia, no licence is regarded as the same as 'all rights reserved', confining any reuse to very limited circumstances. Applying a Creative Commons licence to your data is a simple way to ensure that your data can be reused. The less restrictive the licence, the more that can be done with the data.
-                <p>
-                    To make it easy for the Web to know when a work is available under a particular license, a “machine readable” version of the license provides a summary of the key freedoms and obligations written into a format that software systems, search engines, and other kinds of technology can understand.
-                <p>
-                    Example from the <a href="https://creativecommons.org/choose/" target="_blank"> Creative Commons License Chooser </a>:
-                </p>
-                <p>
-                    What appears in the metadata:
-                </p>
-                <p>
-                    <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png"/></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"> Creative Commons Attribution 4.0 International License</a>.
-                </p>
-                <p>
-                    Code snippet:
-                </p>
-                <pre>
-&lt;a rel="license" href="http://creativecommons.org/licenses/by/4.0/"&gt;
-&lt;img alt="Creative Commons License" style="border-width:0"
-src="https://i.creativecommons.org/l/by/4.0/88x31.png"/&gt;
-&lt;/a&gt;&lt;br /&gt;This work is licensed under a
-&lt;a rel="license" href="http://creativecommons.org/licenses/by/4.0/"&gt;
-Creative Commons Attribution 4.0 International License&lt;/a&gt;.
-                </pre>
-                <p>
-                    Read more:
-                    https://www.ands.org.au/working-with-data/publishing-and-reusing-data/licensing-for-reuse
+                    todo: explanation
                 </p>
             </div>
             <div class="modal-footer">
@@ -1128,23 +1041,57 @@ Creative Commons Attribution 4.0 International License&lt;/a&gt;.
     </div>
 </div>
 
-<div id="info_q12" class="modal fade" role="dialog">
+<div id="info_r2" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">About provenance</h4>
+                <h4 class="modal-title">About provenance information</h4>
             </div>
             <div class="modal-body">
                 <p>
-                    Data provenance is used to document where a piece of data comes from and the process and methodology by which it is produced.  It is important to confirm the authenticity of data enabling trust, credibility and reproducibility. This is becoming increasingly important, especially in the eScience community where research is data intensive and often involves complex data transformations and procedures.
+                    todo: explanation
                 </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="info_r3" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">About file formats</h4>
+            </div>
+            <div class="modal-body">
                 <p>
-                    <a href="https://www.ands.org.au/partners-and-communities/ands-communities/data-provenance-interest-group" target="_blank"> Read more…</a>
+                    todo: explanation
                 </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="info_r4" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">About citation styles</h4>
+            </div>
+            <div class="modal-body">
                 <p>
-                    Provenance vocabularies such as <a href="https://www.w3.org/2005/Incubator/prov/XGR-prov-20101214/#Recommendations" target="_blank"> Provenir Ontology (PROV-O) and others</a>
+                    todo: explanation
                 </p>
             </div>
             <div class="modal-footer">
