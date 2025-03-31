@@ -22,7 +22,6 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js">
-
     </script>
 
     <style>
@@ -40,11 +39,18 @@
 
         .glyphicon-info-sign {font-size: 1.3em; color: #53BE95;}
 
-        a:link {color: #3F8785;}
-
-        a:visited {color: #3F8785;}
         a {color: #3F8785;}
+        a:link {color: #3F8785;}
+        a:visited {color: #3F8785;}
 
+        .container {position: relative;}
+        .topright {position: absolute; right: 20px; top: 10px; width: 110px;}
+
+        h1 {width: 80%; font-weight: 600; margin-top: 50px;}
+
+        .textcolor {background-image:linear-gradient(180deg, #53BE95, #3F8785); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
+
+        img {pointer-events: none;}
     </style>
 
     <script>
@@ -84,7 +90,7 @@
                             parseInt($("#f3").val()) + 
                             parseInt($("#f4").val()) + 
                             parseInt($("#f5").val());
-            $("#fbar").attr('style', "width: " +  (fscore / fscore_max) * 100 + "%");
+            $("#fbar").attr('style', "width: " + (fscore / fscore_max) * 100 + "%");
             $("#fscore").html(fscore);
 
             /* calculate Accessible score */
@@ -92,7 +98,7 @@
             var ascore =    parseInt($("#a1").val()) + 
                             parseInt($("#a2").val()) +
                             parseInt($("#a3").val());
-            $("#abar").attr('style', "width: " +  (ascore / ascore_max) * 100 + "%");
+            $("#abar").attr('style', "width: " + (ascore / ascore_max) * 100 + "%");
             $("#ascore").html(ascore);
 
             /* calculate Interoperable score */
@@ -101,7 +107,7 @@
                             parseInt($("#i2").val()) +
                             parseInt($("#i3").val()) +
                             parseInt($("#i4").val());
-            $("#ibar").attr('style', "width: " +  (iscore / iscore_max) * 100 + "%");
+            $("#ibar").attr('style', "width: " + (iscore / iscore_max) * 100 + "%");
             $("#iscore").html(iscore);
 
             /* calculate Reusable score */
@@ -110,22 +116,24 @@
                             parseInt($("#r2").val()) + 
                             parseInt($("#r3").val()) + 
                             parseInt($("#r4").val());
-            $("#rbar").attr('style', "width: " +  (rscore / rscore_max) * 100 + "%");
+            $("#rbar").attr('style', "width: " + (rscore / rscore_max) * 100 + "%");
             $("#rscore").html(rscore);
 
             /* calculate total score */
             var tscore =    (fscore / fscore_max + 
                             ascore / ascore_max + 
                             iscore / iscore_max + 
-                            rscore / rscore_max)*25;
-            $("#tbar").attr('style', "width: " +  tscore + "%");
+                            rscore / rscore_max) * 25;
+            $("#tbar").attr('style', "width: " + tscore + "%");
 
             /* show values in console */
-            console.log("F: " + (fscore / fscore_max) * 100 + "%")
-            console.log("A: " + (ascore / ascore_max) * 100 + "%")
-            console.log("I: " + (iscore / iscore_max) * 100 + "%")
-            console.log("R: " + (rscore / rscore_max) * 100 + "%")
+            console.log("F: " + (fscore / fscore_max).toFixed(2) * 100 + "%")
+            console.log("A: " + (ascore / ascore_max).toFixed(2) * 100 + "%")
+            console.log("I: " + (iscore / iscore_max).toFixed(2) * 100 + "%")
+            console.log("R: " + (rscore / rscore_max).toFixed(2) * 100 + "%")
             console.log("Total: " + tscore + "%")
+
+            document.getElementById('result').innerHTML = tscore.toFixed(2) + "%";
 
             /* update scores when options are selected */
             $("#f1_answer").html('<i>' + $("#f1 option:selected").text() + '</i>');
@@ -176,7 +184,11 @@
 
 <div class="container">
 
-    <h1>FAIR Assessment Tool by TKFDM</h1>
+    <div class="topright">
+        <img src="images/tkfdm-logo-vektor.svg" alt="tkfdm logo"/>
+    </div>
+
+    <h1 class="textcolor">FAIR Assessment Tool by TKFDM</h1>
 
     <p>
         todo: info text
@@ -191,7 +203,7 @@
                     <h4 class="panel-title">
                         <a data-toggle="collapse" href="#collapseOne">Findable</a>
                         <a href="#fhelp" data-toggle="modal" data-target="#findable_info">
-                        <span class="pull-right glyphicon glyphicon-info-sign"  aria-hidden="true">
+                        <span class="pull-right glyphicon glyphicon-info-sign" aria-hidden="true">
                         </span>
                         </a>
                     </h4>
@@ -428,7 +440,7 @@
                     <h4 class="panel-title">
                         <a data-toggle="collapse" href="#collapseThree">Interoperable</a>
                         <a href="#" data-toggle="modal" data-target="#interoperable_info">
-                        <span class="pull-right glyphicon glyphicon-info-sign"  aria-hidden="true">
+                        <span class="pull-right glyphicon glyphicon-info-sign" aria-hidden="true">
                         </span>
                         </a>
                     </h4>
@@ -546,7 +558,7 @@
                     <h4 class="panel-title">
                         <a data-toggle="collapse" href="#collapseFour">Reusable</a>
                         <a href="#fhelp" data-toggle="modal" data-target="#reusable_info">
-                        <span class="pull-right glyphicon glyphicon-info-sign"  aria-hidden="true">
+                        <span class="pull-right glyphicon glyphicon-info-sign" aria-hidden="true">
                         </span>
                         </a>
                     </h4>
@@ -612,7 +624,7 @@
                                             Proprietary/uncommon formats are explained AND/OR exported into open formats.
                                         </option>
                                         <option value="2">
-                                            Common proprietary formats are used without a duplicate of the files in  an open format.
+                                            Common proprietary formats are used without a duplicate of the files in an open format.
                                         </option>
                                         <option value="0" selected="selected">
                                             The dataset contains proprietary/unknown formats without a explanation OR open format export.
@@ -653,7 +665,7 @@
             </div>
         </div>
 
-        <h3>Total F.A.I.R. Score</h3>
+        <h3>Total FAIR Score: <span id="result"></h3>
 
         <div class="w3-border">
             <div id="tbar" class="w3-container w3-padding w3-green" style="width:0%">
