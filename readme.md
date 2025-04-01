@@ -13,10 +13,10 @@ There can be misspellings, bugs or missing questions or options in the tool. You
 GNU GPLv3 licence
 
 ## ToDo
-* update questions and answers
+* add header and footer texts
+* add explanation texts
 * create german version
-* exchange magic numbers with constants
-* read text and weights from language file (e.g. csv)
+* read text and weights from file (e.g. csv)
 * printable report
 
 ## Contact
