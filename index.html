@@ -91,6 +91,7 @@
                             parseInt($("#f4").val()) + 
                             parseInt($("#f5").val());
             $("#fbar").attr('style', "width: " + (fscore / fscore_max) * 100 + "%");
+            $("#fbar").attr('title', ((fscore / fscore_max) * 100).toFixed(2) + "%");
             $("#fscore").html(fscore);
 
             /* calculate Accessible score */
@@ -99,6 +100,7 @@
                             parseInt($("#a2").val()) +
                             parseInt($("#a3").val());
             $("#abar").attr('style', "width: " + (ascore / ascore_max) * 100 + "%");
+            $("#abar").attr('title', ((ascore / ascore_max) * 100).toFixed(2) + "%");
             $("#ascore").html(ascore);
 
             /* calculate Interoperable score */
@@ -108,6 +110,7 @@
                             parseInt($("#i3").val()) +
                             parseInt($("#i4").val());
             $("#ibar").attr('style', "width: " + (iscore / iscore_max) * 100 + "%");
+            $("#ibar").attr('title', ((iscore / iscore_max) * 100).toFixed(2) + "%");
             $("#iscore").html(iscore);
 
             /* calculate Reusable score */
@@ -117,6 +120,7 @@
                             parseInt($("#r3").val()) + 
                             parseInt($("#r4").val());
             $("#rbar").attr('style', "width: " + (rscore / rscore_max) * 100 + "%");
+            $("#rbar").attr('title', ((rscore / rscore_max) * 100).toFixed(2) + "%");
             $("#rscore").html(rscore);
 
             /* calculate total score */
@@ -125,6 +129,7 @@
                             iscore / iscore_max + 
                             rscore / rscore_max) * 25;
             $("#tbar").attr('style', "width: " + tscore + "%");
+            $("#tbar").attr('title', tscore.toFixed(2) + "%");
 
             /* show values in console */
             console.log("F: " + (fscore / fscore_max).toFixed(2) * 100 + "%")
