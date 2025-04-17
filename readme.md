@@ -13,8 +13,6 @@ There can be misspellings, bugs or missing questions or options in the tool. You
 GNU GPLv3 licence
 
 ## ToDo
-* add header and footer texts
-* add explanation texts
 * create german version
 * read text and weights from file (e.g. csv)
 * printable report
