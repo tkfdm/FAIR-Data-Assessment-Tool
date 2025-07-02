@@ -13,6 +13,13 @@
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
 
+    <!-- DOCX Export -->
+    <script src="https://unpkg.com/docx"></script>
+
+    <!-- PDF Export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico?">
 
@@ -51,10 +58,25 @@
         .textcolor {background-image:linear-gradient(180deg, #53BE95, #3F8785); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
 
         img {pointer-events: none;}
+
+        .custom-btn {
+            background: linear-gradient(180deg, #53BE95, #3F8785);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: 0.2s ease-in-out;
+        }
+
+        .custom-btn:hover {
+            filter: brightness(1.1);
+            cursor: pointer;
+        }
     </style>
 
+    <!-- script for score calculations -->
     <script>
-
         $('document').ready(initialise);
         function initialise() {
             $(document).on('change', 'select', function() {
@@ -62,10 +84,11 @@
                 // if you want to do stuff based on the OPTION element:
                 //var opt = $(this).find('option:selected')[0];
             });
+
             update();
         }
 
-        /* Call this function whenever there is a state change */
+        /* function whenever there is a state change */
         function update() {
             /*
             In all of the following variable names, if there is a prefix of [fair], it stands for
@@ -104,7 +127,7 @@
             $("#ascore").html(ascore);
 
             /* calculate Interoperable score */
-            var iscore_max = 15;
+            var iscore_max = 16;
             var iscore =    parseInt($("#i1").val()) + 
                             parseInt($("#i2").val()) +
                             parseInt($("#i3").val()) +
@@ -141,7 +164,6 @@
             document.getElementById('result').innerHTML = tscore.toFixed(2) + "%";
         }
     </script>
-
 </head>
 
 <body>
@@ -156,8 +178,8 @@
 
     <h1 class="textcolor">FAIR Assessment Tool by TKFDM</h1>
 
-    <p style="margin-top: 2em; margin-bottom: 2em">
-        This tool helps assess how well a dataset or repository aligns with the FAIR principles (<u>F</u>indable, <u>A</u>ccessible, <u>I</u>nteroperable, and <u>R</u>eusable). By answering a series of targeted questions, you can identify strengths, uncover potential gaps, and support efforts to make research data more transparent, usable, and sustainable. When you click on a question, you’ll see an explanation of what it means, along with guidance on each answer option — including tips to help you choose the most appropriate response.
+    <p style="margin-top: 2em; margin-bottom: 2em; text-align: justify;">
+        Make your data FAIR. Identify a dataset's strengths and uncover potential gaps in its FAIRness. This tool's feedback will help you make your research data more transparent, reusable, and sustainable. TKFDM's online questionnaire evaluates the extent to which a dataset adheres to the FAIR principles: <u>F</u>indability, <u>A</u>ccessibility, <u>I</u>nteroperability, and <u>R</u>eusability. The original statements are accessible via the information icon <span class="glyphicon glyphicon-info-sign" style="font-size: 90%;"></span> in the top right corner of each category. Questions and answers are designed for published a datasets. When you click on a question, you’ll see an explanation of what it means. This includes guidance on the answer options in the drop down list as well as further information on the topic helping you to make appropriate choices when publishing data.
     </p>
 
     <div class="bs-example">
@@ -225,25 +247,25 @@
                             <div class="form-group row">
                                 <label for="f3" class="col-sm-4 col-form-label">
                                     <a href="#" data-toggle="modal" data-target="#info_f3">
-                                        How is the data described with metadata?
+                                        How extensive is the data described with metadata?
                                     </a>
                                 </label>
                                 <div class="col-sm-8">
                                     <select class="form-control" id="f3">
                                         <option value="8">
-                                            &#129001; All mandatory and at least five of the recommended OR optional properties are filled out.
+                                            &#129001; Sixteen or more properties are filled out.
                                         </option>
                                         <option value="6">
-                                            &#129000; All mandatory and less than five of the recommended OR optional properties are filled out.
+                                            &#129000; Twelve or more properties are filled out.
                                         </option>
                                         <option value="4">
-                                            &#129000; All mandatory properties are filled out.
+                                            &#129000; Eight or more properties are filled out.
                                         </option>
                                         <option value="2">
-                                            &#129000; Not all mandatory properties are filled out.
+                                            &#129000; Four or more properties are filled out.
                                         </option>
                                         <option value="0" selected="selected">
-                                            &#128997; No mandatory properties are filled out.
+                                            &#128997; Less than four properties are filled out.
                                         </option>
                                     </select>
                                 </div>
@@ -447,7 +469,7 @@
                                 <div class="col-sm-8">
                                     <select class="form-control" id="i2">
                                         <option value="5">
-                                            &#129001; 5 standards are used.
+                                            &#129001; 5 or more standards are used.
                                         </option>
                                         <option value="4">
                                             &#129000; 4 standards are used.
@@ -476,14 +498,17 @@
                                 </label>
                                 <div class="col-sm-8">
                                     <select class="form-control" id="i3">
+                                        <option value="3">
+                                            &#129001; Three or more attributes are linked to related data.
+                                        </option>
                                         <option value="2">
-                                            &#129001; All four attributes are linked to related data.
+                                            &#129000; Two attributes are linked to related data.
                                         </option>
                                         <option value="1">
-                                            &#129000; At least one attribute is linked to related data.
+                                            &#129000; One attribute is linked to related data.
                                         </option>
                                         <option value="0" selected="selected">
-                                            &#128997; No metadata is linked to related data.
+                                            &#128997; No attribute is linked to related data.
                                         </option>
                                     </select>
                                 </div>
@@ -555,7 +580,6 @@
                                     </select>
                                 </div>
                             </div>
-
 
                             <div class="form-group row">
                                 <label for="r2" class="col-sm-4 col-form-label">
@@ -634,6 +658,7 @@
             </div>
         </div>
 
+        <!-- Final Score -->
         <h3>Total FAIR Score: <span id="result"></h3>
 
         <div class="w3-border">
@@ -642,17 +667,78 @@
             </div>
         </div>
         <br>
+
+        <!-- Download Report -->
+        <h3>Report</h3>
+        <p>
+            You can export your answers and results into a downloadable report by clicking the button below. If you enter the title of the evaluated dataset and a link to it in the provided fields, these details will be included in the report. The report lists your answers, the resulting category, and the total FAIR score.
+        </p>
+        <div style="margin-top: 30px;">
+            <div class="form-group">
+                <label for="datasetName">Dataset name (optional):</label>
+                <input type="text" class="form-control" id="datasetName" placeholder="Enter dataset name">
+            </div>
+            <div class="form-group">
+                <label for="datasetLink">Dataset link (optional):</label>
+                <input type="text" class="form-control" id="datasetLink" placeholder="Enter dataset URL or PID">
+            </div>
+        </div>
+        <button id="downloadDocx" class="custom-btn" style="margin-top: 20px;">Download DOCX</button>
+        <!-- <button id="downloadPdf" class="custom-btn" style="margin-top: 20px; margin-left: 10px;">Download PDF</button> -->
+
+        <br>
         <p style="margin-top: 2em">
-            <b>Tool Disclaimer:</b>
+            <b>Disclaimer</b>
         </p>
         <p>
             The TKFDM FAIR Data Assessment Tool has been developed by TKFDM using the base framework of the Assessment Tool by the ARDC (<a href="https://ardc.edu.au/resource/fair-data-self-assessment-tool/" target="_blank">tool</a>, <a href="https://github.com/au-research/FAIR-Data-Assessment-Tool" target="_blank">source code</a>). The source code for this project is available on <a href="https://github.com/tkfdm/FAIR-Data-Assessment-Tool" target="_blank">GitHub</a>.
         </p>
         <p>
-            This tool is provided solely for educational and informational purposes. It reflects our interpretation of the <a href="https://www.go-fair.org/fair-principles/" target="_blank">FAIR principles</a>, with the original statements accessible via the information icon <span class="glyphicon glyphicon-info-sign"></span> in the top-right corner of each category. The questions and answers are designed to be applicable to users who have published a dataset.
+            This tool is provided solely for educational and informational purposes. It reflects our interpretation of the <a href="https://www.go-fair.org/fair-principles/" target="_blank">FAIR principles</a>, with the original statements accessible via the information icon <span class="glyphicon glyphicon-info-sign" style="font-size: 90%;"></span> in the top-right corner of each category. The questions and answers are designed to be applicable to users who have published a dataset.
+        </p>
+        <p>
+            The tool is intended for self-assessment only, serving as a prompt for reflection and discussion on ways to improve data FAIRness. For a more technical perspective on the FAIR principles, please refer to the <a href="https://doi.org/10.5281/zenodo.3775793" target="_blank">FAIRsFAIR Data Object Assessment Metrics</a>, also employed in the <a href="https://www.f-uji.net/" target="_blank">F-UJI Automated FAIR Data Assessment Tool</a>. A comparative overview of these and other FAIR assessment tools is available in our <a href="https://doi.org/10.5281/zenodo.7022037" target="_blank">poster contribution</a>.
+        </p>
+
+        <p style="margin-top: 2em">
+            <b>Calculation</b>
+        </p>
+        <p>
+            The total FAIR score is calculated as the average of the scores in the four main categories: <u>F</u>indability, <u>A</u>ccessibility, <u>I</u>nteroperability, and <u>R</u>eusability. Each of these categories is weighted equally.
+        </p>
+        <p>
+            Within each category, the score is determined by calculating the weighted average of the answers to the category's questions. Each question can have multiple possible answers, and each answer is assigned a specific number of points. The number of points for each answer is not necessarily the same for every question, meaning some questions or answers may contribute more to the category score than others.
+        </p>
+        <p>
+            The points for each answer are visually indicated by colored squares:
+            <ul>
+                <li>
+                    &#129001; Green squares represent the answer(s) with the maximum number of points for that question.
+                </li>
+                <li>
+                    &#129000; Yellow squares mark answers that receive a point value between zero and the maximum. There may be multiple yellow answers per question, and their point values can differ.
+                </li>
+                <li>
+                    &#128997; Red squares indicate answers that receive zero points.
+                </li>
+            </ul>
+            The specific point values assigned to each answer are documented in the tool's documentation on <a href="https://doi.org/10.5281/zenodo.15789507" target="_blank">Zenodo</a>.
+        </p>
+
+        <p style="margin-top: 2em">
+            <b>General Remarks on Data Publication</b>
+        </p>
+        <p>
+            Many aspects of the FAIR criteria depend on the features and standards supported by the repository selected for data publication. A lower FAIR score in this tool does not necessarily indicate that you should relocate your data from a discipline-specific repository that best meets the needs of you and your research community.
+        </p>
+        <p>
+            In this case, you might consider additionally registering your published dataset in a generic data repository that allows you to provide more descriptive metadata, further enhancing the FAIRness of your dataset. For research data generated or collected in collaboration with researchers from a Thuringian university or university of applied sciences, you can utilize <a href="https://refodat.de" target="_blank">REFODAT</a>, the repository for research data in Thuringia.
+        </p>
+        <p>
+            This approach enables you to benefit from the strengths of your discipline-specific repository while also increasing the findability and interoperability of your data through enhanced metadata in a generic repository.
         </p>
         <p style="margin-bottom: 2em">
-            The tool is intended for self-assessment only, serving as a prompt for reflection and discussion on ways to improve data FAIRness. For a more technical perspective on the FAIR principles, please refer to the <a href="https://doi.org/10.5281/zenodo.3775793" target="_blank">FAIRsFAIR Data Object Assessment Metrics</a>, also employed in the <a href="https://www.f-uji.net/" target="_blank">F-UJI Automated FAIR Data Assessment Tool</a>. A comparative overview of these and other FAIR assessment tools is available in our <a href="https://doi.org/10.5281/zenodo.7022037" target="_blank">poster contribution</a>.
+            A README.md template for documenting research data is available on <a href="https://doi.org/10.71758/refodat.24" target="_blank">REFODAT</a>.
         </p>
     </div>
 </div>
@@ -835,7 +921,7 @@
                     A widely used standard for metadata attributes is defined by <a href="https://datacite-metadata-schema.readthedocs.io/en/4.6/properties/overview/#mandatory-properties" target="_blank">DataCite</a>, which specifies 20 properties: 6 are mandatory, 6 are recommended, and 8 are optional. These metadata elements can typically be found on the dataset's landing page – or more completely – in the JSON, XML, or other export formats provided by the repository.
                 </p>
                 <p>
-                    To answer this question, check how many of these metadata properties are present and whether they are filled out.
+                    To answer this question, check the box for the filled out metadata fields and count them.
                 </p>
 
                 <table style="width:100%;">
@@ -887,7 +973,7 @@
             </div>
             <div class="modal-body">
                 <p>
-                    In the context of (meta)data quality, the platform on which data is published can play a crucial role. In a data journal, research datasets or data papers are published only after undergoing a peer review process, ensuring that they make sense not only structurally – via metadata – but also from a scientific perspective. In contrast, a research data repository allows for the provision of detailed metadata for dataset entries, but typically does not evaluate the actual content of the data. When a dataset is published as a supplement to a journal article, it is often not described separately and simply inherits the metadata of the article itself. A basic website that merely links to a dataset often lacks standardized metadata altogether, such as those defined in the third question of Findable by DataCite.
+                    In the context of (meta)data quality, the platform on which data is published can play a crucial role. In a data journal, research datasets or data papers are published only after undergoing a peer review process, ensuring that they make sense not only structurally – via metadata – but also from a scientific perspective. In contrast, a research data repository allows for the provision of detailed metadata for dataset entries, but typically does not evaluate the actual content of the data. When a dataset is published as a supplement to a journal article, it is often not described separately and simply inherits the metadata of the article itself. A basic website that merely links to a dataset often lacks standardized metadata altogether, such as those defined in F3 by the DataCite attributes.
                 </p>
             </div>
             <div class="modal-footer">
@@ -930,7 +1016,7 @@
             </div>
             <div class="modal-body">
                 <p>
-                    This criterion evaluates whether the accessibility statement clearly communicates how the resource can be accessed. The statement should be written in a way that avoids vague or ambiguous language and ensures that users can easily understand what steps (if any) are needed to access the data or service.
+                    This criterion evaluates whether the accessibility statement clearly communicates how the resource can be accessed. The statement should be written in a way that avoids vague or ambiguous language and ensures that users can easily understand what steps (if any) are needed to access the data or service. If there is no accessibility statement but the data can be freely downloaded select answer "1) Yes, Open Access".
                 </p>
                 <p>
                     Importantly, the FAIR principles do not require data to be openly accessible. Embargoed, restricted, or controlled access is fully acceptable (especially in cases involving sensitive or personal data) as long as the access conditions are clearly described. Nevertheless, the guiding ideal remains: as open as possible, as closed as necessary.
@@ -1198,6 +1284,9 @@
                 <p>
                     Provide a recommended citation style for your data to facilitate proper acknowledgment of your work and encourage data sharing. Common citation styles include <a href="https://apastyle.apa.org/style-grammar-guidelines/references/examples" target="_blank">APA</a>, <a href="https://librarydevelopment.group.shef.ac.uk/referencing/harvard.html" target="_blank">Harvard</a> or <a href="https://journals.ieeeauthorcenter.ieee.org/wp-content/uploads/sites/7/IEEE_Reference_Guide.pdf" target="_blank">IEEE</a>. Recommended citation styles are typically found in the metadata, the README file or a dedicated CITATION file, such as a CFF file.
                 </p>
+                <p>
+                    If you can import the citation metadata directly into a reference manager (i.e. <a href="https://www.citavi.com" target="_blank">Citavi</a> or <a href="https://www.zotero.org/" target="_blank">Zotero</a>) choose the first option.
+                </p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -1205,6 +1294,267 @@
         </div>
     </div>
 </div>
+
+<!-- button scripts to create reports -->
+<script>
+    // function for downloading report as docx
+    document.getElementById("downloadDocx").addEventListener("click", function () {
+        // import classes
+        const {
+            Document, Paragraph, TextRun, Packer, HeadingLevel,
+            Header, Footer, AlignmentType, PageNumber,
+            Table, TableRow, TableCell
+        } = window.docx;
+
+        // input fields by user
+        const name = document.getElementById("datasetName").value.trim();
+        const link = document.getElementById("datasetLink").value.trim();
+
+        // helper function: blocks by cateroy
+        function getCategoryBlock(prefix, questionCount, categoryName, barId) {
+            const children = [];
+
+            children.push(new Paragraph(""));
+            children.push(new Paragraph({
+                text: categoryName,
+                heading: HeadingLevel.HEADING_2,
+                spacing: { after: 200 },
+            }));
+
+            for (let i = 1; i <= questionCount; i++) {
+                const id = prefix + i;
+                const questionLabel = document.querySelector(`label[for="${id}"]`);
+                const questionText = questionLabel?.textContent?.trim() || `(missing question text)`;
+                const answer = document.querySelector(`#${id} option:checked`)?.textContent?.trim() || "(no answer)";
+
+                children.push(new Paragraph({
+                    children: [
+                        new TextRun({
+                            text: `${prefix.toUpperCase()}${i}: ${questionText}`,
+                            bold: true,
+                        }),
+                    ],
+                }));
+                children.push(new Paragraph(answer));
+
+                // special case: checkboxes in F3
+                if (prefix === "f" && i === 3) {
+                    const selected = [];
+                    const unselected = [];
+
+                    const checkboxes = document.querySelectorAll('#info_f3 input[type="checkbox"]');
+
+                    checkboxes.forEach(cb => {
+                        const label = cb.nextSibling?.textContent?.trim();
+                        if (!label) return;
+
+                        if (cb.checked) {
+                            selected.push(label);
+                        } else {
+                            unselected.push(label);
+                        }
+                    });
+
+                    // Nur wenn mindestens eine Checkbox ausgewählt ist
+                    if (selected.length > 0) {
+                        const tableRows = [];
+
+                        const maxRows = Math.max(selected.length, unselected.length);
+                        for (let r = 0; r < maxRows; r++) {
+                            tableRows.push(
+                                new TableRow({
+                                    children: [
+                                        new TableCell({
+                                            margins: { left: 200, right: 200 },
+                                            children: [new Paragraph(selected[r] || "")],
+                                        }),
+                                        new TableCell({
+                                            margins: { left: 200, right: 200 },
+                                            children: [new Paragraph(unselected[r] || "")],
+                                        }),
+                                    ],
+                                })
+                            );
+                        }
+
+                        children.push(new Paragraph("")); // Leerzeile
+                        children.push(
+                            new Table({
+                                rows: [
+                                    new TableRow({
+                                        children: [
+                                            new TableCell({
+                                                margins: { left: 200, right: 200 },
+                                                children: [
+                                                    new Paragraph({
+                                                        children: [new TextRun({ text: "Metadata available", bold: true })],
+                                                    }),
+                                                ],
+                                            }),
+                                            new TableCell({
+                                                margins: { left: 200, right: 200 },
+                                                children: [
+                                                    new Paragraph({
+                                                        children: [new TextRun({ text: "Metadata not available", bold: true })],
+                                                    }),
+                                                ],
+                                            }),
+                                        ],
+                                    }),
+                                    ...tableRows,
+                                ],
+                                width: {
+                                    size: 80,
+                                    type: "pct",
+                                },
+                                indent: {
+                                    size: 720,
+                                    type: "dxa",
+                                },
+                            })
+                        );
+                    }
+                }
+                children.push(new Paragraph(""));
+            }
+
+            const categoryScore = document.getElementById(barId)?.getAttribute("title") || "N/A";
+            children.push(new Paragraph({
+                children: [
+                    new TextRun({ text: "Category score: ", bold: true }),
+                    new TextRun(categoryScore),
+                ],
+            }));
+            children.push(new Paragraph(""));
+
+            return children;
+        }
+
+        // create timestamp string for footer
+        const now = new Date();
+        const pad = (n) => String(n).padStart(2, '0');
+        const timestamp = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
+
+        // assemble document contents
+        const doc = new Document({
+            // settings for style, e.g. fonts
+            styles: {
+                default: {
+                    document: {
+                        run: {
+                            font: "Calibri",
+                            size: 24,
+                        },
+                    },
+                },
+            },
+            sections: [{
+                // header with title and link to tool
+                headers: {
+                    default: new Header({
+                        children: [
+                            new Paragraph({
+                                children: [
+                                    new TextRun({
+                                        text: "TKFDM FAIR Assessment Tool Report",
+                                        bold: true,
+                                        size: 20,
+                                    }),
+                                ],
+                                alignment: AlignmentType.CENTER,
+                            }),
+                            new Paragraph({
+                                children: [
+                                    new TextRun({
+                                        text: "https://tkfdm.github.io/FAIR-Data-Assessment-Tool/",
+                                        color: "0000FF", // Link-Farbe
+                                        underline: {},
+                                        size: 20,
+                                    }),
+                                ],
+                                alignment: AlignmentType.CENTER,
+                            }),
+                        ],
+                    }),
+                },
+                // footer with page number and time stamp of generation
+                footers: {
+                    default: new Footer({
+                        children: [
+                            new Paragraph({
+                                children: [
+                                    new TextRun({ children: ["Page ", PageNumber.CURRENT, " of ", PageNumber.TOTAL_PAGES], size: 20 }),
+                                    new TextRun(" | "),
+                                    new TextRun({ text: `Generated: ${timestamp}`, size: 20 }),
+                                ],
+                                alignment: AlignmentType.CENTER,
+                            }),
+                        ],
+                    }),
+                },
+                children: [
+                    new Paragraph({
+                        text: "TKFDM FAIR Assessment Report",
+                        heading: HeadingLevel.HEADING_1,
+                        spacing: { after: 300 },
+                    }),
+
+                    new Paragraph({
+                        children: [
+                            new TextRun({ text: "Dataset name: ", bold: true }),
+                            new TextRun(name || "__________________________"),
+                        ],
+                    }),
+                    new Paragraph({
+                        children: [
+                            new TextRun({ text: "Dataset link: ", bold: true }),
+                            new TextRun(link || "__________________________"),
+                        ],
+                    }),
+                    new Paragraph(""),
+
+                    new Paragraph("This report summarizes the FAIR evaluation of a dataset based on the principles of Findability, Accessibility, Interoperability, and Reusability. The responses selected in the assessment tool are listed below."),
+                    new Paragraph(""),
+
+                    // question/answer blocks by category
+                    ...getCategoryBlock("f", 5, "Findable", "fbar"),
+                    ...getCategoryBlock("a", 3, "Accessible", "abar"),
+                    ...getCategoryBlock("i", 4, "Interoperable", "ibar"),
+                    ...getCategoryBlock("r", 4, "Reusable", "rbar"),
+
+                    // End score
+                    new Paragraph(""),
+                    new Paragraph({
+                        text: "Total FAIR Score",
+                        heading: HeadingLevel.HEADING_2,
+                        spacing: { after: 200 },
+                    }),
+                    new Paragraph({
+                        children: [
+                            new TextRun({ text: "Overall score: ", bold: true }),
+                            new TextRun(document.getElementById("tbar")?.getAttribute("title") || "N/A"),
+                        ],
+                    }),
+                ],
+            }],
+        });
+
+        function getTimestampString() {
+            const now = new Date();
+            const pad = (n) => String(n).padStart(2, '0');
+            return `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}`;
+        }
+
+        Packer.toBlob(doc).then(blob => {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = `${getTimestampString()}-fair-assessment-report.docx`;
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+    });
+</script>
 
 </body>
 </html>
