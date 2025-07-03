@@ -163,6 +163,21 @@
 
             document.getElementById('result').innerHTML = tscore.toFixed(2) + "%";
         }
+
+        /* function to update counter in f3 info */
+        $(document).ready(function () {
+            function updateCheckboxCount() {
+                $('#info_f3_total').text(
+                    'Total: ' + $('#info_f3 input[type="checkbox"]:checked').length
+                );
+            }
+
+            // initial count
+            updateCheckboxCount();
+
+            // count when number of checked boxes is changing
+            $('#info_f3 input[type="checkbox"]').on('change', updateCheckboxCount);
+        });
     </script>
 </head>
 
@@ -955,6 +970,7 @@
                     </td>
                   </tr>
                 </table>
+                <p id="info_f3_total" style="margin-top: 10px; font-weight: bold;">Total: 0</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

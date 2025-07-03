@@ -21,7 +21,6 @@ GNU GPLv3 licence
 
 ## ToDo
 * create german version
-* add sum of checked boxes in F3
 * add report as PDF download
 * read text and weights from file (e.g. csv)
 
