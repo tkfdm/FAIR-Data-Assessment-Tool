@@ -9,16 +9,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
     </script>
 
-    <!-- Bootstrap via CDN -->
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js">
+    </script>
 
     <!-- DOCX Export -->
     <script src="https://unpkg.com/docx"></script>
 
-    <!-- PDF Export -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- Bootstrap via CDN -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico?">
@@ -26,10 +26,6 @@
     <!-- Optional theme -->
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js">
-    </script>
 
     <style>
         canvas {
@@ -1371,7 +1367,7 @@
                         }
                     });
 
-                    // Nur wenn mindestens eine Checkbox ausgewählt ist
+                    // only show table if there is at least one box checked
                     if (selected.length > 0) {
                         const tableRows = [];
 
@@ -1393,7 +1389,7 @@
                             );
                         }
 
-                        children.push(new Paragraph("")); // Leerzeile
+                        children.push(new Paragraph(""));
                         children.push(
                             new Table({
                                 rows: [
@@ -1483,7 +1479,7 @@
                                 children: [
                                     new TextRun({
                                         text: "https://tkfdm.github.io/FAIR-Data-Assessment-Tool/",
-                                        color: "0000FF", // Link-Farbe
+                                        color: "0000FF", // link color
                                         underline: {},
                                         size: 20,
                                     }),
