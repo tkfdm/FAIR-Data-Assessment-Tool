@@ -1591,9 +1591,23 @@
 
 <!-- cross-domain helper function to give height of website -->
 <script>
-    window.addEventListener('load', function () {
-        const height = document.body.scrollHeight;
-        parent.postMessage({ iframeHeight: height }, 'https://forschungsdaten-thueringen.de');
+    function sendHeightToParent() {
+      const height = document.body.scrollHeight;
+      parent.postMessage({ iframeHeight: height }, 'https://forschungsdaten-thueringen.de');
+    }
+
+    window.addEventListener('load', sendHeightToParent);
+
+    // react if body size is changing
+    const resizeObserver = new ResizeObserver(sendHeightToParent);
+    resizeObserver.observe(document.body);
+
+    // (optional) react if size is changing through DOM-changes
+    const mutationObserver = new MutationObserver(sendHeightToParent);
+    mutationObserver.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true
     });
 </script>
 </body>
