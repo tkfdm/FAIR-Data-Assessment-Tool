@@ -20,7 +20,6 @@ We appreciate your support!
 GNU GPLv3 licence
 
 ## ToDo
-* create german version
 * add report as PDF download
 * read text and weights from file (e.g. csv)
 
