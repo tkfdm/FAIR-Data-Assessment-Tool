@@ -1589,5 +1589,12 @@
     });
 </script>
 
+<!-- cross-domain helper function to give height of website -->
+<script>
+    window.addEventListener('load', function () {
+        const height = document.body.scrollHeight;
+        parent.postMessage({ iframeHeight: height }, 'https://forschungsdaten-thueringen.de');
+    });
+</script>
 </body>
 </html>
