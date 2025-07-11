@@ -169,7 +169,7 @@
         $(document).ready(function () {
             function updateCheckboxCount() {
                 $('#info_f3_total').text(
-                    'Total: ' + $('#info_f3 input[type="checkbox"]:checked').length
+                    'Gesamtanzahl: ' + $('#info_f3 input[type="checkbox"]:checked').length
                 );
             }
 
@@ -193,14 +193,14 @@
     </a>
 
     <div class="topleft" style="right: 0px; top: 10px; font-size: 18px;">
-        <span class="fi fi-gb"></span>
-        <a href="index-de.html" title="Deutsch" style="margin-left: 10px; text-decoration: none;"><span class="fi fi-de"></span></a>
+        <a href="index.html" title="Englisch" style="text-decoration: none;"><span class="fi fi-gb"></span></a>
+        <span class="fi fi-de" style="margin-left: 10px; text-decoration: none;"></span>
     </div>
 
-    <h1 class="textcolor" style="margin-top: 100px;">FAIR Assessment Tool by TKFDM</h1>
+    <h1 class="textcolor" style="margin-top: 100px;">FAIR Assessment Tool vom TKFDM</h1>
 
     <p style="margin-top: 2em; margin-bottom: 2em; text-align: justify;">
-        Make your data FAIR. Identify a dataset's strengths and uncover potential gaps in its FAIRness. This tool's feedback will help you make your research data more transparent, reusable, and sustainable. TKFDM's online questionnaire evaluates the extent to which a dataset adheres to the FAIR principles: <u>F</u>indability, <u>A</u>ccessibility, <u>I</u>nteroperability, and <u>R</u>eusability. The original statements are accessible via the information icon <span class="glyphicon glyphicon-info-sign" style="font-size: 90%;"></span> in the top right corner of each category. Questions and answers are designed for published a datasets. When you click on a question, you’ll see an explanation of what it means. This includes guidance on the answer options in the drop down list as well as further information on the topic helping you to make appropriate choices when publishing data.
+        Machen Sie Ihre Daten FAIR. Identifizieren Sie die Stärken eines Datensatzes und decken Sie mögliche Lücken in seiner FAIRness auf. Das Feedback dieses Tools hilft Ihnen, Ihre Forschungsdaten transparent, wiederverwendbar und nachhaltig zu machen. Der Online-Fragebogen des TKFDM bewertet, inwieweit ein Datensatz die FAIR-Prinzipien einhält: <u>F</u>indability (Auffindbarkeit), <u>A</u>ccessibility (Zugänglichkeit), <u>I</u>nteroperability (Interoperabilität) und <u>R</u>eusability (Wiederverwendbarkeit). Die Originalformulierung der FAIR Prinzipien (auf Englisch) sind über das Informationssymbol <span class="glyphicon glyphicon-info-sign" style="font-size: 90%;"></span> in der rechten oberen Ecke der jeweiligen Kategorie zugänglich. Die Fragen und Antworten sind für veröffentlichte Datensätze gedacht. Ein Klick auf die Fragen, erläutert ihren Hintergrund und die Antwortmöglichkeiten im Dropdown-Menü. Diese Einordnung soll zusätzlich gute Entscheidungen bei zukünftigen Datenveröffentlichungen unterstützen.
     </p>
 
     <div class="bs-example">
@@ -223,22 +223,22 @@
                             <div class="form-group row">
                                 <label for="f1" class="col-sm-4 col-form-label">
                                     <a href="#" data-toggle="modal" data-target="#info_f1">
-                                        Does the dataset have any identifiers assigned?
+                                        Wurden dem Datensatz Identifikatioren zugewiesen?
                                     </a>
                                 </label>
                                 <div class="col-sm-8">
                                     <select class="form-control" id="f1">
                                         <option value="8">
-                                            &#129001; Globally resolvable persistent identifier to one online resource (e.g. DOI).
+                                            &#129001; Global auflösbarer, dauerhafter Identifikator für eine Online-Ressource (z. B. DOI).
                                         </option>
                                         <option value="6">
-                                            &#129000; Web address with local identifier in repository.
+                                            &#129000; Webadresse mit lokalem Identifikator in einem Repositorium.
                                         </option>
                                         <option value="4">
-                                            &#129000; Only web address.
+                                            &#129000; Ausschließlich eine Webadresse.
                                         </option>
                                         <option value="0" selected="selected">
-                                            &#128997; No identifier.
+                                            &#128997; Kein Identifikator.
                                         </option>
                                     </select>
                                 </div>
@@ -247,19 +247,19 @@
                             <div class="form-group row">
                                 <label for="f2" class="col-sm-4 col-form-label">
                                     <a href="#" data-toggle="modal" data-target="#info_f2">
-                                        Is the dataset identifier included in all metadata records describing the data?
+                                        Ist der Identifikator des Datensatzes in allen Metadatensätzen enthalten, die die Daten beschreiben?
                                     </a>
                                 </label>
                                 <div class="col-sm-8">
                                     <select class="form-control" id="f2">
                                         <option value="2">
-                                            &#129001; Yes, in all metadata records.
+                                            &#129001; Ja, in allen Metadatenformaten.
                                         </option>
                                         <option value="1">
-                                            &#129000; In some metadata records.
+                                            &#129000; In einigen Metadatenformaten.
                                         </option>
                                         <option value="0" selected="selected">
-                                            &#128997; In no metadata records (or there is no identifier).
+                                            &#128997; In keinem Metadatenformat (oder es gibt keinen Identifikator).
                                         </option>
                                     </select>
                                 </div>
@@ -268,25 +268,25 @@
                             <div class="form-group row">
                                 <label for="f3" class="col-sm-4 col-form-label">
                                     <a href="#" data-toggle="modal" data-target="#info_f3">
-                                        How extensive is the data described with metadata?
+                                        Wie umfassend sind die Daten mit Metadaten beschrieben?
                                     </a>
                                 </label>
                                 <div class="col-sm-8">
                                     <select class="form-control" id="f3">
                                         <option value="8">
-                                            &#129001; Sixteen or more properties are filled out.
+                                            &#129001; Sechzehn oder mehr Eigenschaften sind ausgefüllt.
                                         </option>
                                         <option value="6">
-                                            &#129000; Twelve or more properties are filled out.
+                                            &#129000; Zwölf oder mehr Eigenschaften sind ausgefüllt.
                                         </option>
                                         <option value="4">
-                                            &#129000; Eight or more properties are filled out.
+                                            &#129000; Acht oder mehr Eigenschaften sind ausgefüllt.
                                         </option>
                                         <option value="2">
-                                            &#129000; Four or more properties are filled out.
+                                            &#129000; Vier oder mehr Eigenschaften sind ausgefüllt.
                                         </option>
                                         <option value="0" selected="selected">
-                                            &#128997; Less than four properties are filled out.
+                                            &#128997; Weniger als vier Eigenschaften sind ausgefüllt.
                                         </option>
                                     </select>
                                 </div>
@@ -295,22 +295,22 @@
                             <div class="form-group row">
                                 <label for="f4" class="col-sm-4 col-form-label">
                                     <a href="#" data-toggle="modal" data-target="#info_f4">
-                                        Where is the (meta)data published?
+                                        Wo sind die (Meta-)Daten veröffentlicht?
                                     </a>
                                 </label>
                                 <div class="col-sm-8">
                                     <select class="form-control" id="f4">
                                         <option value="3">
-                                            &#129001; Data Journal.
+                                            &#129001; Datenjournal.
                                         </option>
                                         <option value="2">
-                                            &#129000; Repository.
+                                            &#129000; Repositorum.
                                         </option>
                                         <option value="1">
-                                            &#129000; Article Supplement.
+                                            &#129000; Supplement zu einem Zeitschriftenartikel.
                                         </option>
                                         <option value="0" selected="selected">
-                                            &#128997; Website or link to data with no further information.
+                                            &#128997; Website oder Link ohne weitere Informationen.
                                         </option>
                                     </select>
                                 </div>
@@ -319,19 +319,19 @@
                             <div class="form-group row">
                                 <label for="f5" class="col-sm-4 col-form-label">
                                     <a href="#" data-toggle="modal" data-target="#info_f5">
-                                        How can the metadata be found on the web?
+                                        Wie können die Metadaten im Internet gefunden werden?
                                     </a>
                                 </label>
                                 <div class="col-sm-8">
                                     <select class="form-control" id="f5">
                                         <option value="5">
-                                            &#129001; Through search engines.
+                                            &#129001; Über Suchmaschinen.
                                         </option>
                                         <option value="2">
-                                            &#129000; Only through search on the repository/website.
+                                            &#129000; Nur über die Suche im Repository/Website.
                                         </option>
                                         <option value="0" selected="selected">
-                                            &#128997; Only by known link to the dataset. 
+                                            &#128997; Ausschließlich über den Link zum Datensatz.
                                         </option>
                                     </select>
                                 </div>
@@ -363,28 +363,28 @@
                             <div class="form-group row">
                                 <label for="a1" class="col-sm-4 col-form-label">
                                     <a href="#" data-toggle="modal" data-target="#info_a1">
-                                        Is the accessibility statement unambigous?
+                                        Ist die Aussage zu den Zugangsbedingungen eindeutig?
                                     </a>
                                 </label>
                                 <div class="col-sm-8">
                                     <select class="form-control" id="a1">
                                         <option value="5">
-                                            &#129001; Yes, Open Access.
+                                            &#129001; Ja, offener Zugang.
                                         </option>
                                         <option value="5">
-                                            &#129001; Yes, Accessible by clearly stated conditions.
+                                            &#129001; Ja, klar formulierte Zugangsbedingungen.
                                         </option>
                                         <option value="5">
-                                            &#129001; Yes, Embargo.
+                                            &#129001; Ja, Embargo.
                                         </option>
                                         <option value="2">
-                                            &#129000; Only metadata visible. Sparse information about availability of data.
+                                            &#129000; Nur Metadaten sichtbar. Spärliche Informationen über die Verfügbarkeit von Daten.
                                         </option>
                                         <option value="1">
-                                            &#129000; Only metadata visible. No information about availability of data.
+                                            &#129000; Nur Metadaten sichtbar. Keine Informationen über die Verfügbarkeit der Daten.
                                         </option>
                                         <option value="0" selected="selected">
-                                            &#128997; No access to data or metadata.
+                                            &#128997; Kein Zugang zu Daten oder Metadaten.
                                         </option>
                                     </select>
                                 </div>
@@ -393,22 +393,22 @@
                             <div class="form-group row">
                                 <label for="a2" class="col-sm-4 col-form-label">
                                     <a href="#" data-toggle="modal" data-target="#info_a2">
-                                        Which options exist to download the files?
+                                        Welche Möglichkeiten gibt es, die Dateien herunterzuladen?
                                     </a>
                                 </label>
                                 <div class="col-sm-8">
                                     <select class="form-control" id="a2">
                                         <option value="4">
-                                            &#129001; Simple File Download and API.
+                                            &#129001; Einfacher Dateidownload und API.
                                         </option>
                                         <option value="3">
-                                            &#129000; Only simple file download.
+                                            &#129000; Ausschließlich einfacher Dateidownload.
                                         </option>
                                         <option value="3">
-                                            &#129000; Only API access.
+                                            &#129000; Ausschließlich API-Zugang.
                                         </option>
                                         <option value="0" selected="selected">
-                                            &#128997; No options to get the data.
+                                            &#128997; Keine Optionen zum Abrufen der Daten.
                                         </option>
                                     </select>
                                 </div>
@@ -417,19 +417,19 @@
                             <div class="form-group row">
                                 <label for="a3" class="col-sm-4 col-form-label">
                                     <a href="#" data-toggle="modal" data-target="#info_a3">
-                                        Is there a statement on the website/data location that guarantees the availability of the metadata even if the files are no longer available?
+                                        Gibt es eine Erklärung auf der Website/am Speicherort der Daten, die die Verfügbarkeit der Metadaten garantiert, auch wenn die Dateien nicht mehr verfügbar sind?
                                     </a>
                                 </label>
                                 <div class="col-sm-8">
                                     <select class="form-control" id="a3">
                                         <option value="2">
-                                            &#129001; Yes with explicit retention policy.
+                                            &#129001; Ja, mit explizit formulierter Aufbewahrungsgarantie.
                                         </option>
                                         <option value="1" selected="selected">
-                                            &#129000; Partially with unclear or implicit statements.
+                                            &#129000; Teilweise mit unklaren oder impliziten Aussagen.
                                         </option>
                                         <option value="0" selected="selected">
-                                            &#128997; No statement on metadata persistence.
+                                            &#128997; Keine Aussage zur Dauerhaftigkeit von Metadaten.
                                         </option>
                                     </select>
                                 </div>
@@ -462,19 +462,19 @@
                             <div class="form-group row">
                                 <label for="i1" class="col-sm-4 col-form-label">
                                     <a href="#" data-toggle="modal" data-target="#info_i1">
-                                        Are the metadata available in a standardized format?
+                                        Sind die Metadaten in einem standardisierten Format verfügbar?
                                     </a>
                                 </label>
                                 <div class="col-sm-8">
                                     <select class="form-control" id="i1">
                                         <option value="5">
-                                            &#129001; Metadata are available in more than one standard format.
+                                            &#129001; Metadaten sind in mehr als einem Standardformat verfügbar.
                                         </option>
                                         <option value="3">
-                                            &#129000; Metadata are available in one standard format.
+                                            &#129000; Metadaten sind in einem Standardformat verfügbar.
                                         </option>
                                         <option value="0" selected="selected">
-                                            &#128997; Metadata are not available in a standard format.
+                                            &#128997; Metadaten sind nicht in einem Standardformat verfügbar.
                                         </option>
                                     </select>
                                 </div>
@@ -483,28 +483,28 @@
                             <div class="form-group row">
                                 <label for="i2" class="col-sm-4 col-form-label">
                                     <a href="#" data-toggle="modal" data-target="#info_i2">
-                                        Is the metadata standardized?
+                                        Sind die Metadaten normiert?
                                     </a>
                                 </label>
                                 <div class="col-sm-8">
                                     <select class="form-control" id="i2">
                                         <option value="5">
-                                            &#129001; 5 or more standards are used.
+                                            &#129001; Es werden 5 oder mehr Standards verwendet.
                                         </option>
                                         <option value="4">
-                                            &#129000; 4 standards are used.
+                                            &#129000; Es werden 4 Standards verwendet.
                                         </option>
                                         <option value="3">
-                                            &#129000; 3 standards are used.
+                                            &#129000; Es werden 3 Standards verwendet.
                                         </option>
                                         <option value="2">
-                                            &#129000; 2 standards are used.
+                                            &#129000; Es werden 2 Standards verwendet.
                                         </option>
                                         <option value="1">
-                                            &#129000; 1 standard are used.
+                                            &#129000; Es wird ein Standard verwendet.
                                         </option>
                                         <option value="0" selected="selected">
-                                            &#128997; No standards are used.
+                                            &#128997; Es werden keine Standards verwendet.
                                         </option>
                                     </select>
                                 </div>
@@ -513,22 +513,22 @@
                             <div class="form-group row">
                                 <label for="i3" class="col-sm-4 col-form-label">
                                     <a href="#" data-toggle="modal" data-target="#info_i3">
-                                        Is the metadata linked?
+                                        Sind die Metadaten verknüpft?
                                     </a>
                                 </label>
                                 <div class="col-sm-8">
                                     <select class="form-control" id="i3">
                                         <option value="3">
-                                            &#129001; Three or more attributes are linked to related data.
+                                            &#129001; Drei oder mehr Attribute sind mit Bezugsdaten verknüpft.
                                         </option>
                                         <option value="2">
-                                            &#129000; Two attributes are linked to related data.
+                                            &#129000; Zwei Attribute sind mit Bezugsdaten verknüpft.
                                         </option>
                                         <option value="1">
-                                            &#129000; One attribute is linked to related data.
+                                            &#129000; Ein Attribut ist mit Bezugsdaten verknüpft.
                                         </option>
                                         <option value="0" selected="selected">
-                                            &#128997; No attribute is linked to related data.
+                                            &#128997; Kein Attribut ist mit Bezugsdaten verknüpft.
                                         </option>
                                     </select>
                                 </div>
@@ -537,19 +537,19 @@
                             <div class="form-group row">
                                 <label for="i4" class="col-sm-4 col-form-label">
                                     <a href="#" data-toggle="modal" data-target="#info_i4">
-                                        In which form does the documentation exist?
+                                        In welcher Form liegt die Dokumentation vor?
                                     </a>
                                 </label>
                                 <div class="col-sm-8">
                                     <select class="form-control" id="i4">
                                         <option value="3">
-                                            &#129001; Description metadata field or file.
+                                            &#129001; Beschreibungs-Metadatenfeld oder -Datei (ReadMe).
                                         </option>
                                         <option value="1">
-                                            &#129000; Linked description paper or other source outside the data or metadata.
+                                            &#129000; Verknüpftes Beschreibungspapier oder andere Quelle außerhalb der Daten oder Metadaten.
                                         </option>
                                         <option value="0" selected="selected">
-                                            &#128997; No description given.
+                                            &#128997; Keine Beschreibung.
                                         </option>
                                     </select>
                                 </div>
@@ -583,19 +583,19 @@
                             <div class="form-group row">
                                 <label for="r1" class="col-sm-4 col-form-label">
                                     <a href="#" data-toggle="modal" data-target="#info_r1">
-                                        Is a usage license attached to the data?
+                                        Ist mit den Daten eine Nutzungslizenz verbunden?
                                     </a>
                                 </label>
                                 <div class="col-sm-8">
                                     <select class="form-control" id="r1">
                                         <option value="5">
-                                            &#129001; Standard machine-readable license.
+                                            &#129001; Maschinenlesbare Standardlizenz.
                                         </option>
                                         <option value="3">
-                                            &#129000; Self-written usage conditions without standard.
+                                            &#129000; Selbstgeschriebene Nutzungsbedingungen ohne Standard.
                                         </option>
                                         <option value="0" selected="selected">
-                                            &#128997; No usage conditions given.
+                                            &#128997; Keine Verwendungsbedingungen angegeben.
                                         </option>
                                     </select>
                                 </div>
@@ -604,19 +604,19 @@
                             <div class="form-group row">
                                 <label for="r2" class="col-sm-4 col-form-label">
                                     <a href="#" data-toggle="modal" data-target="#info_r2">
-                                        How much provenance information is in the documentation?
+                                        Wie viel Herkunftsinformation enthält die Dokumentation?
                                     </a>
                                 </label>
                                 <div class="col-sm-8">
                                     <select class="form-control" id="r2">
                                         <option value="5">
-                                            &#129001; Extensive description about provenance information.
+                                            &#129001; Ausführliche Beschreibung des Entstehungszusammenhangs.
                                         </option>
                                         <option value="3">
-                                            &#129000; Some provenance information aspects are described.
+                                            &#129000; Einige Provenienz-Aspekte werden beschrieben.
                                         </option>
                                         <option value="0" selected="selected">
-                                            &#128997; No provenance information is described.
+                                            &#128997; Es werden keine Herkunftsangaben gemacht.
                                         </option>
                                     </select>
                                 </div>
@@ -625,22 +625,22 @@
                             <div class="form-group row">
                                 <label for="r3" class="col-sm-4 col-form-label">
                                     <a href="#" data-toggle="modal" data-target="#info_r3">
-                                        What measures have been taken to increase the accessibility of file formats?
+                                        Welche Maßnahmen wurden ergriffen, um die Zugänglichkeit von Dateiformaten zu verbessern?
                                     </a>
                                 </label>
                                 <div class="col-sm-8">
                                     <select class="form-control" id="r3">
                                         <option value="4">
-                                            &#129001; The dataset contains only open formats.
+                                            &#129001; Der Datensatz enthält ausschließlich offene Formate.
                                         </option>
                                         <option value="4">
-                                            &#129001; Proprietary/uncommon formats are explained AND/OR exported into open formats.
+                                            &#129001; Proprietäre/unübliche Formate werden erklärt UND/ODER in offene Formate exportiert.
                                         </option>
                                         <option value="2">
-                                            &#129000; Common proprietary formats are used without a duplicate of the files in an open format.
+                                            &#129000; Gängige proprietäre Formate werden ohne ein Duplikat der Dateien in einem offenen Format verwendet.
                                         </option>
                                         <option value="0" selected="selected">
-                                            &#128997; The dataset contains proprietary/unknown formats without a explanation OR open format export.
+                                            &#128997; Der Datensatz enthält proprietäre/unübliche Formate ohne Erklärung ODER Export in ein offenes Format.
                                         </option>
                                     </select>
                                 </div>
@@ -649,19 +649,19 @@
                             <div class="form-group row">
                                 <label for="r4" class="col-sm-4 col-form-label">
                                     <a href="#" data-toggle="modal" data-target="#info_r4">
-                                        Is a recommended citation style specified?
+                                        Ist eine empfohlene Zitierweise angegeben?
                                     </a>
                                 </label>
                                 <div class="col-sm-8">
                                     <select class="form-control" id="r4">
                                         <option value="2">
-                                            &#129001; More than one citation style is available.
+                                            &#129001; Es ist mehr als eine Zitierweise verfügbar.
                                         </option>
                                         <option value="1">
-                                            &#129000; One recommended citation style is specified.
+                                            &#129000; Eine empfohlene Zitierweise ist angegeben.
                                         </option>
                                         <option value="0" selected="selected">
-                                            &#128997; No recommended citation styles are specified.
+                                            &#128997; Es werden keine empfohlenen Zitierweisen angegeben.
                                         </option>
                                     </select>
                                 </div>
@@ -691,15 +691,15 @@
         <!-- Download Report -->
         <h3>Report</h3>
         <p>
-            You can export your answers and results into a downloadable report by clicking the button below. If you enter the title of the evaluated dataset and a link to it in the provided fields, these details will be included in the report. The report lists your answers, the resulting category, and the total FAIR score.
+            Sie können Ihre Antworten und Ergebnisse in einen herunterladbaren Bericht exportieren, indem Sie auf die Schaltfläche unten klicken. Wenn Sie den Titel des bewerteten Datensatzes und einen Link dazu in die vorgesehenen Felder eingeben, werden diese Angaben in den Bericht aufgenommen. Der Bericht listet Ihre Antworten, die resultierende Kategorie und die FAIR-Gesamtpunktzahl auf.
         </p>
         <div style="margin-top: 30px;">
             <div class="form-group">
-                <label for="datasetName">Dataset name (optional):</label>
+                <label for="datasetName">Titel des Datensatzes (optional):</label>
                 <input type="text" class="form-control" id="datasetName" placeholder="Enter dataset name">
             </div>
             <div class="form-group">
-                <label for="datasetLink">Dataset link (optional):</label>
+                <label for="datasetLink">Link zum Datensatz (optional):</label>
                 <input type="text" class="form-control" id="datasetLink" placeholder="Enter dataset URL or PID">
             </div>
         </div>
@@ -711,54 +711,54 @@
             <b>Disclaimer</b>
         </p>
         <p>
-            The TKFDM FAIR Data Assessment Tool has been developed by TKFDM using the base framework of the Assessment Tool by the ARDC (<a href="https://ardc.edu.au/resource/fair-data-self-assessment-tool/" target="_blank">tool</a>, <a href="https://github.com/au-research/FAIR-Data-Assessment-Tool" target="_blank">source code</a>). The source code for this project is available on <a href="https://github.com/tkfdm/FAIR-Data-Assessment-Tool" target="_blank">GitHub</a>.
+            Das TKFDM FAIR Data Assessment Tool wurde vom TKFDM auf der Grundlage des Assessment Tools der ARDC entwickelt (<a href="https://ardc.edu.au/resource/fair-data-self-assessment-tool/" target="_blank">tool</a>, <a href="https://github.com/au-research/FAIR-Data-Assessment-Tool" target="_blank">source code</a>). Der Quellcode für dieses Projekt ist auf <a href="https://github.com/tkfdm/FAIR-Data-Assessment-Tool" target="_blank">GitHub</a> verfügbar.
         </p>
         <p>
-            This tool is provided solely for educational and informational purposes. It reflects our interpretation of the <a href="https://www.go-fair.org/fair-principles/" target="_blank">FAIR principles</a>, with the original statements accessible via the information icon <span class="glyphicon glyphicon-info-sign" style="font-size: 90%;"></span> in the top-right corner of each category. The questions and answers are designed to be applicable to users who have published a dataset.
+            Diese Anwendung wird ausschließlich zu Bildungs- und Informationszwecken bereitgestellt. Sie spiegelt unsere Interpretation der <a href="https://www.go-fair.org/fair-principles/" target="_blank">FAIR-Prinzipien</a>, wobei die Originalformulierungen über das Informationssymbol <span class="glyphicon glyphicon-info-sign" style="font-size: 90%;"></span> in der oberen rechten Ecke bei jeder Kategorie zugänglich sind. Fragen und Antworten sind für bereits publizierte Daten konzipiert.
         </p>
         <p>
-            The tool is intended for self-assessment only, serving as a prompt for reflection and discussion on ways to improve data FAIRness. For a more technical perspective on the FAIR principles, please refer to the <a href="https://doi.org/10.5281/zenodo.3775793" target="_blank">FAIRsFAIR Data Object Assessment Metrics</a>, also employed in the <a href="https://www.f-uji.net/" target="_blank">F-UJI Automated FAIR Data Assessment Tool</a>. A comparative overview of these and other FAIR assessment tools is available in our <a href="https://doi.org/10.5281/zenodo.7022037" target="_blank">poster contribution</a>.
+            Das Tool ist nur zur Selbsteinschätzung gedacht und dient als Anregung zum Nachdenken und zur Diskussion über Möglichkeiten zur Verbesserung der FAIRness von Daten. Eine technischere Perspektive auf die FAIR-Grundsätze finden Sie in der <a href="https://doi.org/10.5281/zenodo.3775793" target="_blank">FAIRsFAIR Data Object Assessment Metrics</a>, auf die das <a href="https://www.f-uji.net/" target="_blank">F-UJI Automated FAIR Data Assessment Tool</a> in der automatisierten Auswertung zurückgreift.  Einen vergleichenden Überblick über diese und andere FAIR-Bewertungsinstrumente gibt unserer <a href="https://doi.org/10.5281/zenodo.7022037" target="_blank">Poster</a>.
         </p>
 
         <p style="margin-top: 2em">
-            <b>Calculation</b>
+            <b>Berechnung</b>
         </p>
         <p>
-            The total FAIR score is calculated as the average of the scores in the four main categories: <u>F</u>indability, <u>A</u>ccessibility, <u>I</u>nteroperability, and <u>R</u>eusability. Each of these categories is weighted equally.
+            Die FAIR-Gesamtpunktzahl wird als Durchschnitt der Punktzahlen in den vier Hauptkategorien berechnet: <u>F</u>indability (Auffindbarkeit), <u>A</u>ccessibility (Zugänglichkeit), <u>I</u>nteroperability (Interoperabilität) und <u>R</u>eusability (Wiederverwendbarkeit). Jede dieser Kategorien wird gleich gewichtet.
         </p>
         <p>
-            Within each category, the score is determined by calculating the weighted average of the answers to the category's questions. Every question has mutually exclusive answers, and each answer is assigned a specific number of points. The number of points for each answer is not necessarily the same for every question, meaning some questions or answers may contribute more to the category score than others.
+            Innerhalb jeder Kategorie wird die Punktzahl durch Berechnung des gewichteten Durchschnitts der Antworten auf die Fragen der Kategorie ermittelt. Jede Frage hat sich gegenseitig ausschließende Antworten und jeder Antwort wird eine bestimmte Punktzahl zugewiesen. Die Punktzahl für jede Antwort ist nicht notwendigerweise für jede Frage gleich, d.h. einige Fragen oder Antworten können mehr zur Bewertung der Kategorie beitragen als andere.
         </p>
         <p>
-            The points for each answer are visually indicated by colored squares:
+            Farbige Quadrate visualisieren die Punkte für die einzelnen Antworten:
             <ul>
                 <li>
-                    &#129001; Green squares represent the answer(s) with the maximum number of points for that question.
+                    &#129001; Grüne Quadrate stehen für die Antwort(en) mit der höchsten Punktzahl für diese Frage
                 </li>
                 <li>
-                    &#129000; Yellow squares mark answers that receive a point value between zero and the maximum. There may be multiple yellow answers per question, and their point values can differ.
+                    &#129000; Gelbe Quadrate markieren Antworten, die einen Punktwert zwischen null und dem Höchstwert erhalten. Es kann mehrere gelbe Antworten pro Frage geben, und ihre Punktwerte können unterschiedlich sein.
                 </li>
                 <li>
-                    &#128997; Red squares indicate answers that receive zero points.
+                    &#128997; Rote Quadrate kennzeichnen Antworten, die null Punkte erhalten.
                 </li>
             </ul>
-            The specific point values assigned to each answer are documented in the tool's documentation on <a href="https://doi.org/10.5281/zenodo.15789507" target="_blank">Zenodo</a>.
+            Die technische Dokumentation des Tools auf <a href="https://doi.org/10.5281/zenodo.15789507" target="_blank">Zenodo</a> enthält die spezifischen Punktwerte aller Antworten.
         </p>
 
         <p style="margin-top: 2em">
-            <b>General Remarks on Data Publication</b>
+            <b>Allgemeine Anmerkungen zur Datenveröffentlichung</b>
         </p>
         <p>
-            Many aspects of the FAIR criteria depend on the features and standards supported by the repository selected for data publication. A lower FAIR score in this tool does not necessarily indicate that you should relocate your data from a discipline-specific repository that best meets the needs of you and your research community.
+            Viele Aspekte der FAIR-Kriterien hängen von den Funktionen und Standards ab, die von dem für die Datenveröffentlichung gewählten Repositorium unterstützt werden. Eine niedrigere FAIR-Punktzahl in diesem Tool bedeutet nicht zwangsläufig, dass Sie Ihre Daten aus einem disziplinspezifischen Repositorium, das die Bedürfnisse von Ihnen und Ihrer Forschungsgemeinschaft am besten erfüllt, auslagern sollten.
         </p>
         <p>
-            In this case, you might consider additionally registering your published dataset in a generic data repository that allows you to provide more descriptive metadata, further enhancing the FAIRness of your dataset. For research data generated or collected in collaboration with researchers from a Thuringian university or university of applied sciences, you can utilize <a href="https://refodat.de" target="_blank">REFODAT</a>, the repository for research data in Thuringia.
+            In diesem Fall könnten Sie in Erwägung ziehen, Ihren veröffentlichten Datensatz zusätzlich in einem allgemeinen Datenspeicher zu registrieren, der es Ihnen ermöglicht, mehr beschreibende Metadaten bereitzustellen und so die FAIRness Ihres Datensatzes weiter zu verbessern. Für Forschungsdaten, die in Zusammenarbeit mit Forschern einer Thüringer Universität oder Fachhochschule erzeugt oder gesammelt wurden, können Sie <a href="https://refodat.de" target="_blank">REFODAT</a>, das Repositorium für Forschungsdaten in Thüringen, nutzen.
         </p>
         <p>
-            This approach enables you to benefit from the strengths of your discipline-specific repository while also increasing the findability and interoperability of your data through enhanced metadata in a generic repository.
+            Auf diese Weise können Sie von den Stärken Ihres disziplinspezifischen Repositoriums profitieren und gleichzeitig die Auffindbarkeit und Interoperabilität Ihrer Daten durch erweiterte Metadaten in einem generischen Repositorium verbessern.
         </p>
         <p style="margin-bottom: 2em">
-            A <a href="https://doi.org/10.71758/refodat.24" target="_blank">README.md template</a> for documenting research data is available on REFODAT.
+            Eine <a href="https://doi.org/10.71758/refodat.24" target="_blank">README.md-Vorlage</a> für die Dokumentation von Forschungsdaten ist auf REFODAT verfügbar.
         </p>
     </div>
 </div>
@@ -770,7 +770,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">About Findable (from <a href="https://www.go-fair.org/fair-principles/" target="_blank">GO FAIR</a>)</h4>
+                <h4 class="modal-title">Über Findable (von <a href="https://www.go-fair.org/fair-principles/" target="_blank">GO FAIR</a>)</h4>
             </div>
             <div class="modal-body">
                 <p>
@@ -784,7 +784,7 @@
                 </ul>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
             </div>
         </div>
     </div>
@@ -796,7 +796,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">About Accessible (from <a href="https://www.go-fair.org/fair-principles/" target="_blank">GO FAIR</a>)</h4>
+                <h4 class="modal-title">Über Accessible (von <a href="https://www.go-fair.org/fair-principles/" target="_blank">GO FAIR</a>)</h4>
             </div>
             <div class="modal-body">
                 <p>
@@ -812,7 +812,7 @@
                 </ul>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
             </div>
         </div>
     </div>
@@ -824,7 +824,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">About Interoperability (from <a href="https://www.go-fair.org/fair-principles/" target="_blank">GO FAIR</a>)</h4>
+                <h4 class="modal-title">Über Interoperability (von <a href="https://www.go-fair.org/fair-principles/" target="_blank">GO FAIR</a>)</h4>
             </div>
             <div class="modal-body">
                 <p>
@@ -837,7 +837,7 @@
                 </ul>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
             </div>
         </div>
     </div>
@@ -849,7 +849,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">About Reusable (from <a href="https://www.go-fair.org/fair-principles/" target="_blank">GO FAIR</a>)</h4>
+                <h4 class="modal-title">Über Reusable (von <a href="https://www.go-fair.org/fair-principles/" target="_blank">GO FAIR</a>)</h4>
             </div>
             <div class="modal-body">
                 <p>
@@ -865,7 +865,7 @@
                 </ul>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
             </div>
         </div>
     </div>
@@ -877,21 +877,21 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">About persistent identifiers (PIDs)</h4>
+                <h4 class="modal-title">Über persistente Identifikatoren (PIDs)</h4>
             </div>
             <div class="modal-body">
                 <p>
-                    Identifiers play a crucial role in identifying, locating, retrieving, linking, and citing datasets. While a web address (URL) can indicate where a resource is found online, URLs often change over time, resulting in broken links and irretrievable data.
+                    Identifikatoren spielen eine entscheidende Rolle bei der Identifizierung, Lokalisierung, Abfrage, Verknüpfung und Zitierung von Datensätzen. Eine Webadresse (URL) gibt an, wo eine Ressource online zu finden ist. Allerdings ändern sich URLs oft im Laufe der Zeit, was zu fehlerhaften Links und unauffindbaren Daten führt.
                 </p>
                 <p>
-                    The solution? Persistent Identifiers (PIDs). Unlike regular URLs, PIDs remain stable and unique over time. They work across multiple platforms because they are managed by independent, dedicated registries. The most widely used PID for datasets is the Digital Object Identifier (DOI), which is also common in academic publishing and event documentation.
+                    Die Lösung? Persistente Identifikatoren (PIDs). Im Gegensatz zu regulären URLs bleiben PIDs über die Zeit stabil und eindeutig. Sie funktionieren plattformübergreifend, da sie von unabhängigen, speziellen Registern verwaltet werden. Die am weitesten verbreitete PID für Datensätze ist der Digital Object Identifier (DOI), der auch im akademischen Verlagswesen und in der Veranstaltungsdokumentation üblich ist.
                 </p>
                 <p>
-                    Want to learn more about PIDs? Visit the <a href="https://www.pid-network.de/en/" target="_blank">PID Network</a> for further information.
+                    Möchten Sie mehr über PIDs erfahren? Informieren Sie sich über die Seiten des <a href="https://www.pid-network.de" target="_blank">PID-Netzwerks</a>.
                 </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
             </div>
         </div>
     </div>
@@ -903,23 +903,23 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">About identifiers in metadata</h4>
+                <h4 class="modal-title">Über Identifikatoren in Metadaten</h4>
             </div>
             <div class="modal-body">
                 <p>
-                    A (persistent) identifier shouldn't just exist – it should also be included in the metadata of the dataset. This applies to various possible locations, such as:
+                    Ein (persistenter) Identifikator sollte nicht nur existieren, sondern auch in den Metadaten des Datensatzes enthalten sein. Dies gilt für verschiedene mögliche Stellen, wie z. B.:
                 </p>
                 <ul>
-                    <li>the dataset’s entry or landing page in the repository</li>
-                    <li>the documentation (e.g. a README file), and</li>
-                    <li>at least one of the repository’s export formats (e.g. XML, JSON, JSON-LD, BibTeX, etc.) or embedded directly in the HTML source code of the landing page.</li>
+                    <li>den Eintrag oder die Landing Page des Datensatzes im Repositorium</li>
+                    <li>die Dokumentation (z. B. eine README-Datei), und</li>
+                    <li>mindestens eines der Exportformate des Repositoriums (z. B. XML, JSON, JSON-LD, BibTeX usw.) oder direkt in den HTML-Quellcode der Landing Page eingebettet.</li>
                 </ul>
                 <p>
-                    To achieve the highest score, the identifier should be present in all of these places. If it appears in only one or two, or if not all of these metadata types are available, select the second option. If the identifier is missing entirely in the available metadata – or if no identifier exists at all – choose the third option.
+                    Um die höchste Punktzahl zu erreichen, sollte der Identifikator an allen genannten Stellen vorhanden sein. Wenn er nur an einer oder zwei Stellen vorkommt oder wenn nicht alle Metadatenformate vorhanden sind, wählen Sie die zweite Option. Wenn der Bezeichner in den verfügbaren Metadatenformaten vollständig fehlt - oder wenn überhaupt kein Identifikator vorhanden ist - wählen Sie die dritte Option.
                 </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
             </div>
         </div>
     </div>
@@ -931,54 +931,54 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">About metadata standards (DataCite)</h4>
+                <h4 class="modal-title">Über Standards von Metadaten (DataCite)</h4>
             </div>
             <div class="modal-body">
                 <p>
-                    Comprehensive metadata records include descriptive information that supports the discovery, access, and reuse of the dataset.
+                    Umfassende Metadaten enthalten beschreibende Informationen, die das Auffinden, den Zugang und die Wiederverwendung des Datensatzes unterstützen.
                 </p>
                 <p>
-                    A widely used standard for metadata attributes is defined by <a href="https://datacite-metadata-schema.readthedocs.io/en/4.6/properties/overview/#mandatory-properties" target="_blank">DataCite</a>, which specifies 20 properties: 6 are mandatory, 6 are recommended, and 8 are optional. These metadata elements can typically be found on the dataset's landing page – or more completely – in the JSON, XML, or other export formats provided by the repository.
+                    <a href="https://datacite-metadata-schema.readthedocs.io/en/4.6/properties/overview/#mandatory-properties" target="_blank">DataCite</a> definiert einen weit verbreiteten Metadatenstandard, der 20 Elemente festlegt: 6 sind obligatorisch, 6 sind empfohlen und 8 sind optional. Diese Metadatenelemente sind in der Regel auf der Landing Page des Datensatzes zu finden - oder vollständiger in den JSON-, XML- oder anderen Exportformaten, die vom Repository bereitgestellt werden.
                 </p>
                 <p>
-                    To answer this question, check the box for the filled out metadata fields and count them. The selected fields will also be transferred to the downloadable report.
+                    Um diese Frage zu beantworten, kreuzen Sie das Kästchen für die ausgefüllten Metadatenfelder an, um diese hoch zuzählen. Eine inoffizielle deutsche Übersetzung der Eigenschaften sehen Sie, wenn Sie mit der Maus über die englischen Begriffe zeigen. Die ausgewählten Felder werden ebenfalls in den downloadbaren Bericht übertragen.
                 </p>
 
                 <table style="width:100%;">
                   <tr style="vertical-align: top;">
                     <td>
-                        <b>Mandatory:</b></br>
-                        <input type="checkbox"> Identifier</br>
-                        <input type="checkbox"> Creator</br>
-                        <input type="checkbox"> Title</br>
-                        <input type="checkbox"> Publisher</br>
-                        <input type="checkbox"> PublicationYear</br>
-                        <input type="checkbox"> ResourceType
+                        <b>Obligatorisch:</b></br>
+                        <input type="checkbox"> <span title="Identifikator">Identifier</span></br>
+                        <input type="checkbox"> <span title="Ersteller*in bzw. Autor*in">Creator</span></br>
+                        <input type="checkbox"> <span title="Titel des Datensatzes">Title</span></br>
+                        <input type="checkbox"> <span title="Verlag/Plattform">Publisher</span></br>
+                        <input type="checkbox"> <span title="Veröffentlichungsjahr">PublicationYear</span></br>
+                        <input type="checkbox"> <span title="Typ der Ressource, hier meist 'Dataset'">ResourceType</span>
                     </td>
-                    <td><b>Recommended:</b></br>
-                        <input type="checkbox"> Subject</br>
-                        <input type="checkbox"> Contributor</br>
-                        <input type="checkbox"> Date</br>
-                        <input type="checkbox"> RelatedIdentifier</br>
-                        <input type="checkbox"> Description</br>
-                        <input type="checkbox"> GeoLocation
+                    <td><b>Empfohlen:</b></br>
+                        <input type="checkbox"> <span title="Fachgebiete bzw. Schlüsselwörter">Subject</span></br>
+                        <input type="checkbox"> <span title="Mitwirkende">Contributor</span></br>
+                        <input type="checkbox"> <span title="Datumsangaben">Date</span></br>
+                        <input type="checkbox"> <span title="verwandte Quellen mit PIDs">RelatedIdentifier</span></br>
+                        <input type="checkbox"> <span title="Beschreibung">Description</span></br>
+                        <input type="checkbox"> <span title="Standorte">GeoLocation</span>
                     </td>
                     <td><b>Optional:</b></br>
-                        <input type="checkbox"> Language</br>
-                        <input type="checkbox"> AlternateIdentifier</br>
-                        <input type="checkbox"> Size</br>
-                        <input type="checkbox"> Format</br>
-                        <input type="checkbox"> Version</br>
-                        <input type="checkbox"> Rights</br>
-                        <input type="checkbox"> FundingReference</br>
-                        <input type="checkbox"> RelatedItem
+                        <input type="checkbox"> <span title="Sprachen">Language</span></br>
+                        <input type="checkbox"> <span title="andere Identifikatoren zu diesem Datensatz">AlternateIdentifier</span></br>
+                        <input type="checkbox"> <span title="Größe des Datensatzes">Size</span></br>
+                        <input type="checkbox"> <span title="Dateiformate">Format</span></br>
+                        <input type="checkbox"> <span title="Versionen">Version</span></br>
+                        <input type="checkbox"> <span title="Rechte, wie durch Lizenzen">Rights</span></br>
+                        <input type="checkbox"> <span title="Angaben zu Förderungen">FundingReference</span></br>
+                        <input type="checkbox"> <span title="verwandte Quellen ggf. ohne PIDs">RelatedItem</span>
                     </td>
                   </tr>
                 </table>
-                <p id="info_f3_total" style="margin-top: 10px; font-weight: bold;">Total: 0</p>
+                <p id="info_f3_total" style="margin-top: 10px; font-weight: bold;">Gesamtanzahl: 0</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
             </div>
         </div>
     </div>
@@ -990,15 +990,15 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">About publishing platforms</h4>
+                <h4 class="modal-title">Über Veröffentlichungsplattformen</h4>
             </div>
             <div class="modal-body">
                 <p>
-                    In the context of (meta)data quality, the platform on which data is published can play a crucial role. In a data journal, research datasets or data papers are published only after undergoing a peer review process, ensuring that they make sense not only structurally – via metadata – but also from a scientific perspective. In contrast, a research data repository allows for the provision of detailed metadata for dataset entries, but typically does not evaluate the actual content of the data. When a dataset is published as a supplement to a journal article, it is often not described separately and simply inherits the metadata of the article itself. A basic website that merely links to a dataset often lacks standardized metadata altogether, such as those defined in F3 by the DataCite attributes.
+                    Die Plattform, auf der Daten veröffentlicht werden, ist (mit)bestimmend für die Datenqualität. In einer Datenzeitschrift werden Forschungsdatensätze oder Datenpapiere erst veröffentlicht, nachdem sie einen Peer-Review-Prozess durchlaufen haben. Dies stellt sicher, dass die Daten nicht nur strukturell - über Metadaten - sondern auch aus wissenschaftlicher Sicht sinnvoll sind. Im Gegensatz dazu ermöglicht ein Forschungsrepositorium die Bereitstellung detaillierter Metadaten für Datensatzeinträge, bewertet aber in der Regel nicht den eigentlichen Inhalt der Daten. Wenn ein Datensatz als Ergänzung zu einem Zeitschriftenartikel veröffentlicht wird, wird er oft nicht gesondert beschrieben und übernimmt die Metadaten des Artikels selbst. Auf einer einfachen Website, die lediglich auf einen Datensatz verweist, fehlen häufig standardisierte Metadaten, wie sie in F3 durch die DataCite-Attribute definiert sind.
                 </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
             </div>
         </div>
     </div>
@@ -1010,18 +1010,18 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">About search engines</h4>
+                <h4 class="modal-title">Über Suchmaschinen</h4>
             </div>
             <div class="modal-body">
                 <p>
-                    A rich metadata description alone does not guarantee that a dataset will be findable on the internet. To be discoverable, the dataset must be registered or indexed in a searchable resource. This can be achieved by the platform, for example, by registering a DOI via DataCite or by embedding JSON-LD metadata directly in the HTML code of the dataset’s landing page.
+                    Eine umfangreiche Metadatenbeschreibung allein garantiert nicht, dass ein Datensatz im Internet auffindbar ist. Um auffindbar zu sein, muss der Datensatz in einer durchsuchbaren Ressource registriert oder indexiert werden. Dies kann von der Plattform beispielsweise durch die Registrierung einer DOI über DataCite oder durch die Einbettung von JSON-LD-Metadaten direkt in den HTML-Code der Landing Page des Datensatzes erreicht werden.
                 </p>
                 <p>
-                    To check whether a dataset is findable on the web, try using a general search engine like <a href="https://www.ecosia.org/" target="_blank">Ecosia</a>, <a href="https://duckduckgo.com/" target="_blank">DuckDuckGo</a>, <a href="https://www.google.com/" target="_blank">Google</a>, <a href="https://www.bing.com/" target="_blank">Bing</a> – or use specialized dataset search engines such as <a href="https://explore.openaire.eu/" target="_blank">OpenAIRE Search</a> or <a href="https://datasetsearch.research.google.com/" target="_blank">Google Dataset Search</a>. In less ideal cases, the dataset may not be registered externally, but still indexed within the hosting platform, making it at least searchable internally. In the worst-case scenario, the dataset is only accessible via a direct URL, which means it is not discoverable through any search engine at all.
+                    Um zu prüfen, ob ein Datensatz im Web auffindbar ist, können Sie eine generische Suchmaschine wie <a href="https://www.ecosia.org/" target="_blank">Ecosia</a>, <a href="https://duckduckgo.com/" target="_blank">DuckDuckGo</a>, <a href="https://www.google.com/" target="_blank">Google</a>, <a href="https://www.bing.com/" target="_blank">Bing</a> verwenden – oder auf Daten spezialisierte Suchmaschinen wie <a href="https://explore.openaire.eu/" target="_blank">OpenAIRE Search</a> oder <a href="https://datasetsearch.research.google.com/" target="_blank">Google Dataset Search</a>. In weniger idealen Fällen kann es sein, dass der Datensatz nicht extern registriert ist, aber dennoch innerhalb der Hosting-Plattform indiziert ist, so dass er zumindest intern auffindbar ist. Im ungünstigsten Fall ist der Datensatz nur über eine direkte URL zugänglich, d. h. er ist über keine Suchmaschine auffindbar.
                 </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
             </div>
         </div>
     </div>
@@ -1033,18 +1033,18 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">About accessibility statements</h4>
+                <h4 class="modal-title">Über Zugangsbedingungen</h4>
             </div>
             <div class="modal-body">
                 <p>
-                    This criterion evaluates whether the accessibility statement clearly communicates how the resource can be accessed. The statement should be written in a way that avoids vague or ambiguous language and ensures that users can easily understand what steps (if any) are needed to access the data or service. If there is no accessibility statement but the data can be freely downloaded select answer "1) Yes, Open Access".
+                    Das Kriterium bewertet, ob die Zugangsbedingungen eindeutig beschreiben, wie auf die Ressource zugegriffen werden kann. Die Erklärung sollte so formuliert sein, dass vage oder zweideutige Formulierungen vermieden werden und dass die Nutzer*innen leicht verstehen können, welche Schritte (wenn überhaupt) für den Zugang zu den Daten oder dem Dienst erforderlich sind. Wenn es keine Erklärung zur Zugänglichkeit gibt, die Daten aber frei heruntergeladen werden können, wählen Sie die Antwort „1) Ja, offener Zugang“.
                 </p>
                 <p>
-                    Importantly, the FAIR principles do not require data to be openly accessible. Embargoed, restricted, or controlled access is fully acceptable (especially in cases involving sensitive or personal data) as long as the access conditions are clearly described. Nevertheless, the guiding ideal remains: as open as possible, as closed as necessary.
+                    Es ist zu betonen, dass die FAIR-Prinzipien nicht vorschreiben, dass die Daten offen zugänglich sein müssen. Ein gesperrter, eingeschränkter oder kontrollierter Zugang ist durchaus akzeptabel (insbesondere in Fällen, in denen es um sensible oder personenbezogene Daten geht), solange die Zugangsbedingungen klar beschrieben sind. Dennoch bleibt der Grundsatz „so offen wie möglich, so geschlossen wie nötig“ bestehen.
                 </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
             </div>
         </div>
     </div>
@@ -1056,18 +1056,18 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">About access options</h4>
+                <h4 class="modal-title">Über Zugangsoptionen</h4>
             </div>
             <div class="modal-body">
                 <p>
-                    The download options describe how users can technically retrieve the data once access has been granted. Typical download mechanisms include a direct download via a web interface (e.g. HTML link to a file or dataset) or machine-accessible methods such as an API. The more flexible and standardized the download options are, the better the resource supports automated reuse and integration into workflows.
+                    Die Download-Optionen beschreiben, wie Nutzer*innen die Daten technisch abrufen können, sobald der Zugang gewährt wurde. Typische Download-Mechanismen sind ein direkter Download über eine Weboberfläche (z. B. HTML-Link zu einer Datei oder einem Datensatz) oder maschinell zugängliche Methoden wie eine API. Je flexibler und standardisierter die Download-Optionen sind, desto besser unterstützt die Ressource die automatisierte Wiederverwendung und Integration in Arbeitsabläufe.
                 </p>
                 <p>
-                    Common API types include RESTful APIs, which allow programmatic access to specific data endpoints, and OAI-PMH (Open Archives Initiative Protocol for Metadata Harvesting), often used in repositories to expose metadata and sometimes full data. To be considered a valid download option, the repository must explicitly indicate in its documentation that such an API exists and provide sufficient instructions on how to use it (e.g. base URLs, endpoints, authentication requirements). Providing both a user-friendly (HTML) and a machine-readable (API) access path is considered best practice, though having at least one method clearly documented and functional is usually sufficient to meet basic FAIR standards.
+                    Zu den gängigen API-Typen gehören RESTful APIs, die den automatisierten Zugriff auf bestimmte Datenendpunkte ermöglichen, und OAI-PMH (Open Archives Initiative Protocol for Metadata Harvesting), welches häufig in Repositorien verwendet wird, um Metadaten und manchmal auch vollständige Daten zugänglich zu machen. Um als API-Zugang gewertet zu werden, sollte das Repositorium in seiner Dokumentation ausdrücklich auf die API verweisen, und ausreichende Anweisungen zu ihrer Verwendung geben (z. B. Basis-URLs, Endpunkte, Authentifizierungsanforderungen). Die Bereitstellung sowohl eines benutzerfreundlichen (HTML) als auch eines maschinenlesbaren (API) Zugangspfads gilt als beste Praxis. Um die grundlegenden FAIR-Standards zu erfüllen, reicht eine klar dokumentierte und funktionsfähige Methode.
                 </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
             </div>
         </div>
     </div>
@@ -1079,18 +1079,18 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">About metadata availability</h4>
+                <h4 class="modal-title">Über Verfügbarkeit von Metadaten</h4>
             </div>
             <div class="modal-body">
                 <p>
-                    The long-term accessibility of metadata is a core element of the FAIR principles. Even if the underlying data can no longer be made available (due to legal, ethical, technical, or organizational reasons) the metadata should remain accessible to preserve the scientific record, enable citation, and support discoverability of past research outputs.
+                    Die langfristige Zugänglichkeit von Metadaten ist ein Kernelement der FAIR-Prinzipien. Selbst wenn die zugrundeliegenden Daten nicht mehr zur Verfügung gestellt werden können (aus rechtlichen, ethischen, technischen oder organisatorischen Gründen), sollten die Metadaten zugänglich bleiben, um die wissenschaftlichen Aufzeichnungen zu bewahren, Zitierungen zu ermöglichen und die Auffindbarkeit früherer Forschungsergebnisse zu unterstützen.
                 </p>
                 <p>
-                    To fulfill this criterion, the repository should explicitly state whether metadata will be retained and remain publicly accessible even if the data files are deleted, embargoed, or otherwise removed. Ideally, the repository also provides information on its preservation and contingency strategies – e.g. how long metadata is guaranteed to be stored, and whether metadata (and/or data) is transferred to an archival service or another trusted repository in case of deprecation or closure of the hosting platform.
+                    Um dieses Kriterium zu erfüllen, sollte das Repositorium ausdrücklich angeben, ob die Metadaten aufbewahrt werden und öffentlich zugänglich bleiben, auch wenn die Dateien gelöscht, mit einem Embargo belegt oder anderweitig entfernt werden. Idealerweise gibt das Repositorium auch Auskunft über seine Aufbewahrungs- und Notfallstrategien - z. B. wie lange Metadaten garantiert aufbewahrt werden und ob Metadaten (und/oder Dateien) an einen Archivierungsdienst oder ein anderes vertrauenswürdiges Repositorium übertragen werden, falls die Hosting-Plattform veraltet ist oder geschlossen wird.
                 </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
             </div>
         </div>
     </div>
@@ -1102,18 +1102,18 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">About metadata container</h4>
+                <h4 class="modal-title">Über Container von Metadaten</h4>
             </div>
             <div class="modal-body">
                 <p>
-                    The metadata should be provided in a structured, machine-readable format that follows common standards. Standardized metadata formats enable interoperability across systems, facilitate automated data processing, and support long-term usability of the data.
+                    Die Metadaten sollten in einem strukturierten, maschinenlesbaren Format bereitgestellt werden, das gemeinsamen Standards folgt. Standardisierte Metadatenformate ermöglichen die Interoperabilität zwischen verschiedenen Systemen, erleichtern die automatisierte Datenverarbeitung und unterstützen die langfristige Nutzbarkeit der Daten.
                 </p>
                 <p>
-                    Typical formats include XML, JSON or JSON-LD, which are widely used for structured data exchange, as well as YAML, which is often used for configuration or lightweight metadata, and BibTeX (.bib) for bibliographic references. These formats exist to ensure that metadata can be easily parsed, validated, and reused by both humans and machines. The use of such formats is a key step toward making data interoperable across platforms, tools, and domains.
+                    Typische Formate sind XML, JSON oder JSON-LD, die für den strukturierten Datenaustausch weit verbreitet sind, sowie YAML, das häufig für Konfigurations- oder leichtgewichtige Metadaten verwendet wird, und BibTeX (.bib) für bibliografische Referenzen. Diese Formate sollen sicherstellen, dass Metadaten sowohl von Menschen als auch von Maschinen leicht eingelesen, validiert und wiederverwendet werden können. Die Verwendung solcher Formate ist ein wichtiger Schritt, um Daten plattform-, tool- und bereichsübergreifend interoperabel zu machen.
                 </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
             </div>
         </div>
     </div>
@@ -1125,25 +1125,25 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">About specific metadata standards</h4>
+                <h4 class="modal-title">Über spezifische Metadaten-Standards</h4>
             </div>
             <div class="modal-body">
                 <p>
-                    Standardized metadata values ensure consistency, machine-readability, and semantic clarity across datasets and systems. By using community-recognized identifiers, formats, and vocabularies, metadata becomes more interoperable and easier to link with other research outputs. Key elements that benefit from standardization include:
+                    Standardisierte Metadatenelemente gewährleisten Konsistenz, maschinelle Lesbarkeit und semantische Klarheit über Datensätze und Systeme hinweg. Durch die Verwendung von gemeinschaftlich anerkannten Identifikatoren, Formaten und Vokabularen werden Metadaten interoperabel und lassen sich leichter mit anderen Forschungsergebnissen verknüpfen. Zu den Schlüsselelementen, die von der Standardisierung profitieren, gehören:
                 </p>
                 <ul>
-                    <li><b>Person identifiers</b> such as ORCID, ResearcherID, ScopusID, ISNI, VIAF, or GND</li>
-                    <li><b>Institutional identifiers</b> such as ROR, ISNI, RINGGOLD, GRID, or Wikidata</li>
-                    <li><b>Dates</b> formatted according to the ISO 8601 standard (e.g. 2023-11-05)</li>
-                    <li><b>Keywords</b> drawn from controlled vocabularies like GND, MeSH, GEMET, Iconclass, or EuroSciVoc (see BARTOC for a registry of vocabularies)</li>
-                    <li><b>Relations between resources</b>, expressed using qualified descriptors such as <i>is part of</i>, <i>is documented by</i>, <i>is version of</i>, etc.</li>
+                    <li><b>Personenidentifikatoren</b> wie ORCID, ResearcherID, ScopusID, ISNI, VIAF oder GND</li>
+                    <li><b>Institutionelle Identifikatoren</b> wie ROR, ISNI, RINGGOLD, GRID oder Wikidata</li>
+                    <li><b>Datumsangaben</b>, formatiert nach der Norm ISO 8601 (z. B. 2023-11-05)</li>
+                    <li><b>Schlüsselwörter</b> aus kontrollierten Vokabularen wie GND, MeSH, GEMET, Iconclass oder EuroSciVoc (siehe BARTOC für ein Verzeichnis von Vokabularen)</li>
+                    <li><b>Verbundene Ressourcen</b>, mit entsprechenden Beschreibungselementen wie <i>ist Teil von</i>, <i>ist dokumentiert durch</i>, <i>ist Version von</i> usw.</li>
                 </ul>
                 <p>
-                    Applying such standards strengthens metadata quality and enhances integration with other data sources. It is, however, sufficient to apply these standards where feasible. For instance, a ROR ID may not be available if an institution is not listed in the ROR registry, or keywords might not come from a controlled vocabulary if they describe emerging or highly specific topics not yet covered by existing thesauri.
+                    Die Anwendung solcher Standards erhöht die Qualität der Metadaten und verbessert die Integration mit anderen Datenquellen. Es ist jedoch ausreichend, diese Standards dort anzuwenden, wo es möglich ist. So kann beispielsweise eine ROR-ID nicht verfügbar sein, wenn eine Einrichtung nicht im ROR-Register aufgeführt ist, oder Schlüsselwörter können nicht aus einem kontrollierten Vokabular stammen, wenn sie neu entstehende oder sehr spezifische Themen beschreiben, die noch nicht von bestehenden Thesauri abgedeckt werden.
                 </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
             </div>
         </div>
     </div>
@@ -1155,24 +1155,25 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">About linked metadata</h4>
+                <h4 class="modal-title">Über verknüpfte Metadaten</h4>
             </div>
             <div class="modal-body">
                 <p>
-                    Linked metadata refers to the practice of connecting metadata elements to authoritative external resources, related data, or formal definitions. Such linking enhances the semantic richness and interoperability of metadata, allowing both humans and machines to better interpret the context and meaning of each element.
+                    Unter verknüpften Metadaten versteht man die Verknüpfung von Metadatenelementen mit maßgeblichen externen Ressourcen, verwandten Daten oder formalen Definitionen. Eine solche Verknüpfung erhöht den semantischen Reichtum und die Interoperabilität von Metadaten, so dass sowohl Menschen als auch Maschinen den Kontext und die Bedeutung der einzelnen Elemente besser interpretieren können.
                 </p>
                 <p>
-                    For example, <b>personal identifiers</b> like ORCID or GND should not only be present but also resolvable. This means they are provided as clickable links that lead to the corresponding profile or entry. The same applies to <b>institutional identifiers</b> such as ROR or ISNI, which should point to a reliable description of the affiliated organization.
+                    So sollten beispielsweise <b>persönliche Identifikatoren</b> wie ORCID oder GND nicht nur vorhanden, sondern auch auflösbar sein. Das bedeutet, dass sie als anklickbare Links bereitgestellt werden, die zu dem entsprechenden Profil oder Eintrag führen. Das Gleiche gilt für <b>institutionelle Identifikatoren</b> wie ROR oder ISNI, die auf eine zuverlässige Beschreibung der zugehörigen Organisation verweisen sollten.
                 </p>
                 <p>
-                    <b>Keywords</b> taken from standardized vocabularies may also link to explanations or hierarchical structures. This helps users understand their meaning and relationships. While not all keywords need to be linked, doing so for at least a representative subset is considered good practice. Additionally, <b>references to related resources</b> – such as other datasets, publications, or a documentation – should ideally be expressed as qualified, clickable links. These links should resolve to the original source or record of the related item.
+                    <b>Schlüsselwörter</b>, die aus standardisierten Vokabularen stammen, können auch mit Erklärungen oder hierarchischen Strukturen verknüpft werden. Dies hilft den Benutzern, ihre Bedeutung und Beziehungen zu verstehen. Auch wenn nicht alle Schlüsselwörter verlinkt werden müssen, so gilt es doch als gute Praxis, dies zumindest für eine repräsentative Teilmenge zu tun. Außerdem sollten <b>Verweise auf verwandte Ressourcen</b> (z. B. Datensätze, Veröffentlichungen oder Dokumentation) idealerweise als qualifizierte, anklickbare Links dargestellt werden. Diese Links sollten auf die ursprüngliche Quelle oder den Datensatz des betreffenden Elements verweisen.
+
                 </p>
                 <p>
-                    Establishing such connections not only supports better navigation and reuse. It also contributes to realizing the vision of the semantic web, where data is meaningfully connected across systems.
+                    Das Herstellen solcher Verbindungen unterstützt nicht nur eine bessere Navigation und Wiederverwendung. Sie trägt auch zur Verwirklichung der Vision des semantischen Webs bei, in dem Daten systemübergreifend sinnvoll miteinander verbunden sind.
                 </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
             </div>
         </div>
     </div>
@@ -1184,18 +1185,18 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">About documentation options</h4>
+                <h4 class="modal-title">Über Optionen zur Dokumentation</h4>
             </div>
             <div class="modal-body">
                 <p>
-                    Comprehensive documentation is essential for understanding, interpreting, and reusing a dataset. This question focuses on where and in what form such documentation is provided. Ideally, descriptive information – especially about provenance, structure, and context (see second question in Reusable) – is embedded directly within the repository or the dataset itself.
+                    Eine umfassende Dokumentation ist für das Verständnis, die Interpretation und die Wiederverwendung eines Datensatzes unerlässlich. Diese Frage konzentriert sich darauf, wo und in welcher Form eine solche Dokumentation bereitgestellt wird. Im Idealfall sind die beschreibenden Informationen - insbesondere zu Herkunft, Struktur und Kontext (siehe Frage R2) - direkt in das Repositorium oder den Datensatz selbst eingebettet.
                 </p>
                 <p>
-                    Within the repository, metadata fields can be filled out during deposition or be accompanied by a file such as a README or another structured description format. This is the preferred form, as the documentation is preserved together with the dataset. Alternatively, the dataset may be described in a publication, project website, or another external resource. While this can provide rich context, the separation may hinder long-term access and make automated interpretation more difficult.
+                    Innerhalb des Repositoriums können die Metadatenfelder bei der Bereitstellung ausgefüllt werden oder von einer Datei wie einer README oder einem anderen strukturierten Beschreibungsformat begleitet werden. Dies ist die bevorzugte Form, da die Dokumentation zusammen mit dem Datensatz aufbewahrt wird. Alternativ kann der Datensatz auch in einer Veröffentlichung, auf einer Projektwebsite oder einer anderen externen Ressource beschrieben werden. Dies kann zwar einen reichhaltigen Kontext liefern, aber die Trennung kann den langfristigen Zugang erschweren und die automatisierte Interpretation behindern.
                 </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
             </div>
         </div>
     </div>
@@ -1207,29 +1208,29 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">About licenses</h4>
+                <h4 class="modal-title">Über Lizenzen</h4>
             </div>
             <div class="modal-body">
                 <p>
-                    A license defines the conditions under which a particular object can be used, modified, and shared. The absence of a license does not imply that the object is free to use, but requires obtaining explicit permission from the copyright holder for the intended use. By issuing a license, you eliminate this uncertainty, clearly communicate the terms of use, and reduce the need for individual permissions.
+                    Eine Lizenz definiert die Bedingungen, unter denen ein bestimmtes Objekt verwendet, verändert und weitergegeben werden kann. Das Fehlen einer Lizenz bedeutet nicht, dass das Objekt frei verwendet werden darf, sondern dass eine ausdrückliche Genehmigung des Urheberrechtsinhabers für die beabsichtigte Verwendung eingeholt werden muss. Durch die Vergabe einer Lizenz beseitigen Sie diese Ungewissheit, teilen die Nutzungsbedingungen klar mit und verringern den Bedarf an individuellen Genehmigungen.
                 </p>
                 <p>
-                    Whenever possible, choose a well-known, standardized, and machine-readable license to minimize misunderstandings. Be sure to include the license name, identifier, and a link to its full text in your work.
+                    Wählen Sie nach Möglichkeit eine bekannte, standardisierte und maschinenlesbare Lizenz, um Missverständnisse zu vermeiden. Achten Sie darauf, den Lizenznamen, die Kennung und einen Link zum Volltext in Ihre Arbeit aufzunehmen.
                 </p>
                 <p>
-                    Different licenses are suited to different use cases and types of objects. To encourage the reuse of your work, select a license that is <b>as open as possible while being as restrictive as necessary</b>. Commonly used open standard licenses for research data and software include:
+                    Verschiedene Lizenzen eignen sich für unterschiedliche Anwendungsfälle und Objekttypen. Um die Wiederverwendung Ihrer Arbeit zu fördern, wählen Sie eine Lizenz, die <b>so offen wie möglich und gleichzeitig so restriktiv wie nötig ist</b>. Zu den häufig verwendeten offenen Standardlizenzen für Forschungsdaten und Software gehören:
                 </p>
                 <ul>
-                    <li><a href="https://creativecommons.org/" target="_blank">Creative Commons</a> for data, e.g. <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank">CC0-1.0</a> and <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY-4.0</a></li>
-                    <li><a href="https://opendatacommons.org/" target="_blank">Open Data Commons</a> for data and especially databases, e.g. <a href="https://opendatacommons.org/licenses/pddl/" target="_blank">PDDL</a> and <a href="https://opendatacommons.org/licenses/by/" target="_blank">ODC-By</a></li>
-                    <li>Various <a href="https://opensource.org/licenses" target="_blank">open-source software licenses</a>, such as: <a href="https://opensource.org/license/mit" target="_blank">MIT</a>, <a href="https://opensource.org/license/bsd-3-clause" target="_blank">BSD-3-Clause</a>, <a href="https://opensource.org/license/apache-2-0" target="_blank">Apache-2.0</a>, <a href="https://opensource.org/license/lgpl-3-0" target="_blank">LGPL-3.0-only</a> and <a href="https://opensource.org/license/gpl-3-0" target="_blank">GPL-3.0-only</a></li>
+                    <li><a href="https://creativecommons.org/" target="_blank">Creative Commons</a> für Daten, wie <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank">CC0-1.0</a> und <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC-BY-4.0</a></li>
+                    <li><a href="https://opendatacommons.org/" target="_blank">Open Data Commons</a> für Daten und insbesondere Datenbanken, z. B. <a href="https://opendatacommons.org/licenses/pddl/" target="_blank">PDDL</a> und <a href="https://opendatacommons.org/licenses/by/" target="_blank">ODC-By</a></li>
+                    <li>Diverse <a href="https://opensource.org/licenses" target="_blank">Open-Source Software Lizenzen</a>, wie beispielsweise: <a href="https://opensource.org/license/mit" target="_blank">MIT</a>, <a href="https://opensource.org/license/bsd-3-clause" target="_blank">BSD-3-Clause</a>, <a href="https://opensource.org/license/apache-2-0" target="_blank">Apache-2.0</a>, <a href="https://opensource.org/license/lgpl-3-0" target="_blank">LGPL-3.0-only</a> und <a href="https://opensource.org/license/gpl-3-0" target="_blank">GPL-3.0-only</a></li>
                 </ul>
                 <p>
-                    Licenses can typically be found in the metadata of a repository entry, in a dedicated LICENSE file, or within a README file. To verify whether a license is standardized and machine-readable, you can refer to <a href="https://spdx.org/licenses/" target="_blank">SPDX</a>. For a quick overview of a license's terms and conditions consult <a href="https://www.tldrlegal.com/" target="_blank">TLDRLegal</a>. However, it is essential to read the full license text carefully before applying it to your works, which exceed the threshold of originality. For example, pure measurement data from scientific instruments do not and are best published under CC0. For details see forschungsdaten.info (<a href="https://forschungsdaten.info/themen/rechte-und-pflichten/urheberrecht/" target="_blank">de</a>|<a href="https://forschungsdaten.info/praxis-kompakt/english-pages/legal-issues/" target="_blank">en</a>).
+                    Lizenzen sind in der Regel in den Metadaten eines Repository-Eintrags, in einer speziellen LICENSE-Datei oder in einer README-Datei zu finden. Um zu überprüfen, ob eine Lizenz standardisiert und maschinenlesbar ist, nutzen Sie <a href="https://spdx.org/licenses/" target="_blank">SPDX</a>. Einen schnellen Überblick über die Bedingungen einer Lizenz bietet <a href="https://www.tldrlegal.com/" target="_blank">TLDRLegal</a>. Es ist jedoch unerlässlich, den vollständigen Lizenztext sorgfältig zu lesen, bevor Sie ihn auf Ihre Werke anwenden, die eine entsprechende Schöpfungshöhe aufweisen. Reine Messdaten von wissenschaftlichen Instrumenten zum Beispiel werden nicht unter CC0 veröffentlicht. Einzelheiten siehe forschungsdaten.info (<a href="https://forschungsdaten.info/themen/rechte-und-pflichten/urheberrecht/" target="_blank">de</a>|<a href="https://forschungsdaten.info/praxis-kompakt/english-pages/legal-issues/" target="_blank">en</a>).
                 </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
             </div>
         </div>
     </div>
@@ -1241,27 +1242,27 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">About provenance information</h4>
+                <h4 class="modal-title">Über die Herkunft von Daten</h4>
             </div>
             <div class="modal-body">
                 <p>
-                    Provenance information documents the origins, history, and evolution of data throughout its life cycle. Key elements include:
+                    Provenienzinformationen dokumentieren den Ursprung, die Geschichte und die Entwicklung von Daten während ihres gesamten Lebenszyklus. Zu den wichtigsten Elementen gehören:
                 </p>
                 <ul>
-                    <li><b>Research Context</b>: The underlying research question and related projects, publications, or datasets.</li>
-                    <li><b>Contributions</b>: Contact information and roles of contributors.</li>
-                    <li><b>Data Organization</b>: Naming conventions and organizational structures.</li>
-                    <li><b>Methodology</b>: Requirements, methods, and software used for data generation, transformation, analysis, visualization, and reuse.</li>
+                    <li><b>Forschungskontext</b>: Die zugrunde liegende Forschungsfrage und die damit verbundenen Projekte, Veröffentlichungen oder Datensätze.</li>
+                    <li><b>Beiträge</b>: Kontaktinformationen und Funktionen der Mitwirkenden.</li>
+                    <li><b>Datenorganisation</b>: Namenskonventionen und Organisationsstrukturen.</li>
+                    <li><b>Methodik</b>: Anforderungen, Methoden und Software für die Erzeugung, Umwandlung, Analyse, Visualisierung und Wiederverwendung von Daten.</li>
                 </ul>
                 <p>
-                    Rich provenance information fosters collaboration, builds trust through accountability, and enhances data quality by promoting reproducibility, transparency, and compliance. The information is typically found in the README file, the structured metadata on a repositories web interface or in its export files (e.g. XML, JSON, ...). 
+                    Umfangreiche Provenienzinformationen fördern die Zusammenarbeit, schaffen Vertrauen durch Nachvollziehbarkeit und verbessern die Datenqualität durch Förderung der Reproduzierbarkeit, Transparenz und Regelkonformität. Provenienzinformationen finden sich in der Regel in der README-Datei und den strukturierten Metadaten auf der Weboberfläche eines Repositoriums bzw. in seinen Exportdateien (z. B. XML, JSON, ...).
                 </p>
                 <p>
-                    To achieve the highest score in this question, pay special attention to the detailed description of data origin, evolution, and handling.
+                    Um bei dieser Frage die höchste Punktzahl zu erreichen, sollten Sie besonders auf die detaillierte Beschreibung der Herkunft, Entwicklung und Handhabung der Daten achten.
                 </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
             </div>
         </div>
     </div>
@@ -1273,21 +1274,21 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">About file formats</h4>
+                <h4 class="modal-title">Über Dateiformate</h4>
             </div>
             <div class="modal-body">
                 <p>
-                    Whenever possible, use open, standardized file formats that are platform-agnostic, non-proprietary, and ideally machine-readable. <b>Open formats enhance the accessibility, interoperability, and longevity of your data</b>, facilitating its reuse across disciplines. Learn more about open formats, for example, at the <a href="https://data.europa.eu/elearning/en/module9/#/id/co-01" target="_blank">European Data Portal</a>.
+                    Verwenden Sie nach Möglichkeit offene, standardisierte Dateiformate, die plattformunabhängig, nicht proprietär und idealerweise maschinenlesbar sind. Offene Formate verbessern die Zugänglichkeit, Interoperabilität und Langlebigkeit Ihrer Daten und erleichtern deren Wiederverwendung in verschiedenen Disziplinen. Erfahren Sie mehr über offene Formate, zum Beispiel auf dem <a href="https://data.europa.eu/elearning/en/module9/#/id/co-01" target="_blank">European Data Portal</a>.
                 </p>
                 <p>
-                    However, proprietary file formats are often involved in the research data life cycle, such as those generated by scientific instruments or specialized software. While these formats may be unavoidable, aim to export your data to open formats at reasonable intervals. When publishing data, include both the open and proprietary formats, especially if the latter are common in your field. <b>Provide additional information about proprietary formats</b>, explaining which instruments produce and which software is needed to handle them.
+                    Allerdings sind im Lebenszyklus von Forschungsdaten häufig proprietäre Dateiformate beteiligt, wie sie beispielsweise von wissenschaftlichen Instrumenten oder spezieller Software erzeugt werden. Auch wenn diese Formate unvermeidlich sein mögen, sollten Sie versuchen, Ihre Daten in angemessenen Abständen in offene Formate zu exportieren. Geben Sie bei der Veröffentlichung von Daten sowohl die offenen als auch die proprietären Formate an, insbesondere wenn letztere in Ihrem Bereich üblich sind. <b>Stellen Sie zusätzliche Informationen über proprietäre Formate bereit</b>, indem Sie erklären, welche Instrumente sie erzeugen und welche Software zu ihrer Verarbeitung erforderlich ist.
                 </p>
                 <p>
-                    <b>Avoid using non-research-specific, proprietary file formats</b> when equivalent open formats exist. For example, use <a href="https://en.wikipedia.org/wiki/Markdown" target="_blank">Markdown</a> and <a href="https://en.wikipedia.org/wiki/Comma-separated_values" target="_blank">CSV</a> for text and tabular data, or the <a href="https://en.wikipedia.org/wiki/OpenDocument" target="_blank">OpenDocument format</a> for office applications. Consult <a href="https://en.wikipedia.org/wiki/List_of_open_file_formats" target="_blank">Wikipedia's list of open file formats</a> to find suitable options for various data types.
+                    <b>Vermeiden Sie die Verwendung von nicht forschungsspezifischen, proprietären Dateiformaten</b>, wenn es gleichwertige offene Formate gibt. Nutzen Sie beispielsweise <a href="https://en.wikipedia.org/wiki/Markdown" target="_blank">Markdown</a> und <a href="https://en.wikipedia.org/wiki/Comma-separated_values" target="_blank">CSV</a> für Text und Tabellendaten, oder das <a href="https://en.wikipedia.org/wiki/OpenDocument" target="_blank">OpenDocument-Format</a> für Büroanwendungen. In der <a href="https://en.wikipedia.org/wiki/List_of_open_file_formats" target="_blank">Wikipedia-Liste der offenen Dateiformate</a> finden Sie geeignete Optionen für verschiedene Datentypen.
                 </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
             </div>
         </div>
     </div>
@@ -1299,18 +1300,18 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">About citation styles</h4>
+                <h4 class="modal-title">Über Zitationsstile</h4>
             </div>
             <div class="modal-body">
                 <p>
-                    Provide a recommended citation style for your data to facilitate proper acknowledgment of your work and encourage data sharing. Common citation styles include <a href="https://apastyle.apa.org/style-grammar-guidelines/references/examples" target="_blank">APA</a>, <a href="https://librarydevelopment.group.shef.ac.uk/referencing/harvard.html" target="_blank">Harvard</a> or <a href="https://journals.ieeeauthorcenter.ieee.org/wp-content/uploads/sites/7/IEEE_Reference_Guide.pdf" target="_blank">IEEE</a>. Recommended citation styles are typically found in the metadata, the README file or a dedicated CITATION file, such as a CFF file.
+                    Geben Sie eine empfohlene Zitierweise für Ihre Daten an, um die ordnungsgemäße Anerkennung Ihrer Arbeit zu erleichtern und die gemeinsame Nutzung von Daten zu fördern. Gängige Zitierweisen sind <a href="https://apastyle.apa.org/style-grammar-guidelines/references/examples" target="_blank">APA</a>, <a href="https://librarydevelopment.group.shef.ac.uk/referencing/harvard.html" target="_blank">Harvard</a> oder <a href="https://journals.ieeeauthorcenter.ieee.org/wp-content/uploads/sites/7/IEEE_Reference_Guide.pdf" target="_blank">IEEE</a>. Die empfohlenen Zitierweisen sind in der Regel in den Metadaten, in der README-Datei oder in einer speziellen CITATION-Datei, z. B. einer .cff-Datei, zu finden.
                 </p>
                 <p>
-                    If you can import the citation metadata directly into a reference manager (i.e. <a href="https://www.citavi.com" target="_blank">Citavi</a> or <a href="https://www.zotero.org/" target="_blank">Zotero</a>) choose the first option.
+                    Wenn Sie die Zitiermetadaten direkt in einen Referenzmanager (z. B. <a href="https://www.citavi.com" target="_blank">Citavi</a> oder <a href="https://www.zotero.org/" target="_blank">Zotero</a>) importieren können, wählen Sie die erste Option.
                 </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
             </div>
         </div>
     </div>
@@ -1366,13 +1367,14 @@
                     const checkboxes = document.querySelectorAll('#info_f3 input[type="checkbox"]');
 
                     checkboxes.forEach(cb => {
-                        const label = cb.nextSibling?.textContent?.trim();
-                        if (!label) return;
+                        const labelSpan = cb.nextElementSibling;
+                        const labelText = labelSpan?.textContent?.trim() || "(kein Text)";
+                        if (!labelText) return;
 
                         if (cb.checked) {
-                            selected.push(label);
+                            selected.push(labelText);
                         } else {
-                            unselected.push(label);
+                            unselected.push(labelText);
                         }
                     });
 
@@ -1408,7 +1410,7 @@
                                                 margins: { left: 200, right: 200 },
                                                 children: [
                                                     new Paragraph({
-                                                        children: [new TextRun({ text: "Metadata available", bold: true })],
+                                                        children: [new TextRun({ text: "Metadaten vorhanden", bold: true })],
                                                     }),
                                                 ],
                                             }),
@@ -1416,7 +1418,7 @@
                                                 margins: { left: 200, right: 200 },
                                                 children: [
                                                     new Paragraph({
-                                                        children: [new TextRun({ text: "Metadata not available", bold: true })],
+                                                        children: [new TextRun({ text: "Metadaten nicht vorhanden", bold: true })],
                                                     }),
                                                 ],
                                             }),
@@ -1442,7 +1444,7 @@
             const categoryScore = document.getElementById(barId)?.getAttribute("title") || "N/A";
             children.push(new Paragraph({
                 children: [
-                    new TextRun({ text: "Category score: ", bold: true }),
+                    new TextRun({ text: "Kategoriebewertung: ", bold: true }),
                     new TextRun(categoryScore),
                 ],
             }));
@@ -1502,9 +1504,9 @@
                         children: [
                             new Paragraph({
                                 children: [
-                                    new TextRun({ children: ["Page ", PageNumber.CURRENT, " of ", PageNumber.TOTAL_PAGES], size: 20 }),
+                                    new TextRun({ children: ["Seite ", PageNumber.CURRENT, " von ", PageNumber.TOTAL_PAGES], size: 20 }),
                                     new TextRun(" | "),
-                                    new TextRun({ text: `Generated: ${timestamp}`, size: 20 }),
+                                    new TextRun({ text: `Erstellt: ${timestamp}`, size: 20 }),
                                 ],
                                 alignment: AlignmentType.CENTER,
                             }),
@@ -1513,7 +1515,7 @@
                 },
                 children: [
                     new Paragraph({
-                        text: "Evaluation according to the FAIR Assessment Tool of the Thuringian Competence Network for Research Data Management (TKFDM)",
+                        text: "Auswertung nach dem FAIR Assessment Tool vom Thüringer Kompetenznetzwerk Forschungsdatenmanagement (TKFDM)",
                         heading: HeadingLevel.HEADING_1,
                         spacing: { after: 300 },
                         alignment: AlignmentType.CENTER
@@ -1521,25 +1523,28 @@
 
                     new Paragraph({
                         children: [
-                            new TextRun({ text: "Dataset name: ", bold: true }),
+                            new TextRun({ text: "Name des Datensatzes: ", bold: true }),
                             new TextRun(name || "__________________________"),
                         ],
                     }),
                     new Paragraph({
                         children: [
-                            new TextRun({ text: "Dataset link: ", bold: true }),
-                            link
-                                ? new ExternalHyperlink({
-                                    children: [ new TextRun({ text: link, style: "Hyperlink" }) ],
-                                    link: link
-                                })
-                                : new TextRun("__________________________")
-                        ]
+                            new TextRun({ text: "Link zum Datensatz: ", bold: true }),
+                            new ExternalHyperlink({
+                                children: [
+                                    new TextRun({
+                                        text: link || "__________________________",
+                                        style: "Hyperlink",
+                                    })
+                                ],
+                                link: link || "",
+                            })
+                        ],
                     }),
                     new Paragraph(""),
 
                     new Paragraph({
-                        text: "This report summarizes the FAIR evaluation of a dataset based on the principles of Findability, Accessibility, Interoperability, and Reusability. The responses selected in the assessment tool are listed below.",
+                        text: "Dieser Bericht fasst die Bewertung eines Datensatzes anhand der FAIR-Prinzipien Auffindbarkeit, Zugänglichkeit, Interoperabilität und Wiederverwendbarkeit zusammen. Die im Bewertungstool ausgewählten Antworten sind unten aufgeführt.",
                         alignment: AlignmentType.JUSTIFIED,
                     }),
                     new Paragraph(""),
@@ -1553,13 +1558,13 @@
                     // End score
                     new Paragraph(""),
                     new Paragraph({
-                        text: "Total FAIR Score",
+                        text: "Ergebnis nach den FAIR-Prinzipien",
                         heading: HeadingLevel.HEADING_2,
                         spacing: { after: 200 },
                     }),
                     new Paragraph({
                         children: [
-                            new TextRun({ text: "Overall score: ", bold: true }),
+                            new TextRun({ text: "Gesammtbewertung: ", bold: true }),
                             new TextRun(document.getElementById("tbar")?.getAttribute("title") || "N/A"),
                         ],
                     }),
@@ -1577,7 +1582,7 @@
             const url = URL.createObjectURL(blob);
             const a = document.createElement("a");
             a.href = url;
-            a.download = `${getTimestampString()}-fair-assessment-report.docx`;
+            a.download = `${getTimestampString()}-fair-assessment-bericht.docx`;
             a.click();
             URL.revokeObjectURL(url);
         });
