@@ -1586,24 +1586,35 @@
 
 <!-- cross-domain helper function to give height of website -->
 <script>
-    function sendHeightToParent() {
-      const height = document.body.scrollHeight;
-      parent.postMessage({ iframeHeight: height }, 'https://forschungsdaten-thueringen.de');
-    }
+  // list of allowed parent origins
+  const allowedParentOrigins = [
+    'https://forschungsdaten-thueringen.de',
+    'https://www.forschungsdaten-thueringen.de'
+  ];
 
-    window.addEventListener('load', sendHeightToParent);
+  function sendHeightToParent() {
+    const height = document.body.scrollHeight;
 
-    // react if body size is changing
-    const resizeObserver = new ResizeObserver(sendHeightToParent);
-    resizeObserver.observe(document.body);
-
-    // (optional) react if size is changing through DOM-changes
-    const mutationObserver = new MutationObserver(sendHeightToParent);
-    mutationObserver.observe(document.body, {
-      childList: true,
-      subtree: true,
-      attributes: true
+    // send postMessage for each allowed parent origin
+    allowedParentOrigins.forEach(origin => {
+      parent.postMessage(
+        { iframeHeight: height }, origin);
     });
+  }
+
+  window.addEventListener('load', sendHeightToParent);
+
+  // react if body size is changing
+  const resizeObserver = new ResizeObserver(sendHeightToParent);
+  resizeObserver.observe(document.body);
+
+  // (optional) react if size is changing through DOM-changes
+  const mutationObserver = new MutationObserver(sendHeightToParent);
+  mutationObserver.observe(document.body, {
+    childList: true,
+    subtree: true,
+    attributes: true
+  });
 </script>
 
 </body>
