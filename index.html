@@ -162,7 +162,64 @@
             console.log("R: " + (rscore / rscore_max).toFixed(2) * 100 + "%")
             console.log("Total: " + tscore + "%")
 
-            document.getElementById('result').innerHTML = tscore.toFixed(2) + "%";
+            /* create CSV string */
+
+            // helper function to get id of the selected option of a question
+            function getSelectedIndex(id) {
+                return document.getElementById(id).selectedIndex + 1;
+            }
+
+            // helper function for percentage fixed on 2 digits with comma
+            function formatPercent(value) {
+                return value.toFixed(2).replace('.', ',') + "%";
+            }
+
+            // collect option numbers
+            var fValues = [
+                getSelectedIndex("f1"),
+                getSelectedIndex("f2"),
+                getSelectedIndex("f3"),
+                getSelectedIndex("f4"),
+                getSelectedIndex("f5")
+            ];
+            var aValues = [
+                getSelectedIndex("a1"),
+                getSelectedIndex("a2"),
+                getSelectedIndex("a3")
+            ];
+            var iValues = [
+                getSelectedIndex("i1"),
+                getSelectedIndex("i2"),
+                getSelectedIndex("i3"),
+                getSelectedIndex("i4")
+            ];
+            var rValues = [
+                getSelectedIndex("r1"),
+                getSelectedIndex("r2"),
+                getSelectedIndex("r3"),
+                getSelectedIndex("r4")
+            ];
+
+            // calculate percentages
+            var fPercent = formatPercent((fscore / fscore_max) * 100);
+            var aPercent = formatPercent((ascore / ascore_max) * 100);
+            var iPercent = formatPercent((iscore / iscore_max) * 100);
+            var rPercent = formatPercent((rscore / rscore_max) * 100);
+            var tPercent = formatPercent(tscore);
+
+            // create array with all values
+            var csvArray = []
+                .concat(fValues, [fPercent])
+                .concat(aValues, [aPercent])
+                .concat(iValues, [iPercent])
+                .concat(rValues, [rPercent])
+                .concat([tPercent]);
+            var csvString = csvArray.join(";");
+
+            // output to console
+            console.log("CSV:", csvString);
+
+            document.getElementById('result').innerHTML = tPercent;
         }
 
         /* function to update counter in f3 info */
